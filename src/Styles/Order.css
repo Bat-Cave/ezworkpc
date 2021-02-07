@@ -1,0 +1,65 @@
+.order{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.order h2{
+    width: 100%;
+    text-align: center;
+    margin: 32px 0;
+    text-transform: uppercase;
+    border-bottom: 1px solid black;
+}
+
+.order section{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    margin: 32px 0;
+}
+
+.order section h3{
+    width: 100%;
+}
+
+.order .option {
+    margin: 4px 4px 4px 32px;
+    display: flex;
+    align-items: center;
+}
+
+.order .option div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between ;
+}
+
+.order input{
+    margin-right: 12px;
+}
+
+.order .price{
+    font-size: 16px;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.order .loader{
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    border-left: 2px solid transparent;
+    border-radius: 50%;
+    animation: rotate 1s infinite;
+}
+
+@keyframes rotate {
+    0%{transform: rotate(0deg);}
+    100%{transform: rotate(360deg);}
+}
