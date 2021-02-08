@@ -8,6 +8,7 @@
 body{
   width: 100vw;
   height: 100vh;
+  min-width: 350px;
 }
 
 .container{
@@ -21,8 +22,8 @@ body{
 
 a{
   text-decoration: none;
-  color: black;
-  padding: 0 16px;
+  color: white;
+  padding: 0 48px;
   cursor: pointer;
   height: 100%;
   display: flex;
@@ -32,7 +33,8 @@ a{
 }
 
 a:hover{
-  backdrop-filter: invert(50%);
+  background: white;
+  color: rebeccapurple;
 }
 
 ::-webkit-scrollbar{
@@ -40,7 +42,7 @@ a:hover{
 }
 
 ::-webkit-scrollbar-track{
-  background: rebeccapurple;
+  background: #663399;
 }
 
 ::-webkit-scrollbar-thumb{

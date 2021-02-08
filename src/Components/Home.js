@@ -61,6 +61,7 @@ useEffect(() => {
 
     return(
         <div className='home'>
+            <br></br>
             <section>
                 <h1>Welcome.</h1>
                 <p>I build workstation computers. Need one? or two? or 20?</p>
@@ -73,6 +74,7 @@ useEffect(() => {
                         <br></br>
                         <h4>Features:</h4>
                         <ul>
+                            <li>USB 3.0</li>
                             <li>HDMI, DVI, and Display Port</li>
                             <li>1 Gbe Ethernet</li>
                             <li>16 GB DDR4 3000MHz Memory</li>
@@ -127,7 +129,7 @@ useEffect(() => {
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>Cudy Wi-Fi 6 & Bluetooth 5.0 Card</h4>  
+                        <h4>Cudy Wi-Fi 6 & Bluetooth 5.0</h4>  
                         <p>Wi-Fi Card (optional)</p>  
                     </div>
                     <div className='price'>{prices.wifi ? prices.wifi : <span className='loader'></span>}</div>
