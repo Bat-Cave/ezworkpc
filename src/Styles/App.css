@@ -37,6 +37,11 @@ a:hover{
   color: rebeccapurple;
 }
 
+.linkActive{
+  background: white;
+  color: rebeccapurple;
+}
+
 button{
   border: none;
   background: rebeccapurple;

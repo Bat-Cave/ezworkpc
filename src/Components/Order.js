@@ -104,11 +104,25 @@ const Order = () => {
     }
 
     const submitRequest = async (e) => {
+        if(!options.storage){
+            document.getElementById("storageOption").scrollIntoView({behavior: 'smooth'});
+            return
+        }
+        if(!options.wifi){
+            document.getElementById("wifiOption").scrollIntoView({behavior: 'smooth', block: 'start'});
+            return
+        }
         e.preventDefault();
         let orderCode = await generateOrderCode();
         let emailTo = inputs.email;
         let firstName = inputs.firstName;
         let lastName = inputs.lastName;
+        let phone = inputs.phone;
+        let email = inputs.email;
+        let addressStreet = inputs.shippingAddressStreet;
+        let addressCity = inputs.shippingAddressCity;
+        let addressState = inputs.shippingAddressState;
+        let addressZIP = inputs.shippingAddressZIP;
         let subject = 'I got your order!'
         let html = 
         `<div>
@@ -135,7 +149,16 @@ const Order = () => {
 
         let toRicoEmail = `
         <div>
-            ${orderCode}
+            <p>Order: ${orderCode}</p>
+            <p>First Name: ${firstName}</p>
+            <p>Last Name: ${lastName}</p>
+            <p>Phone: ${phone}</p>
+            <p>Email: ${email}</p>
+            <p>Street: ${addressStreet}</p>
+            <p>City: ${addressCity}</p>
+            <p>State: ${addressState}</p>
+            <p>ZIP: ${addressZIP}</p>
+            <p>options: ${options.storage}, ${options.wifi}</p>
         </div>`
 
         await axios.post("/sendEmail", {emailTo: 'ezworkpc@gmail.com', html: toRicoEmail, subject: 'New Order!'})
@@ -149,6 +172,7 @@ const Order = () => {
         <div className='order'>
             <h2>Options</h2>
             <section>
+                <span id='storageOption'></span>
                 <h3>Storage options</h3>
                 <div className='option'>
                     <input type='radio' name='storage' value='storage250' onChange={(e) => updateOptions(e.target.name, e.target.value)}/>
@@ -168,6 +192,7 @@ const Order = () => {
                 </div>
             </section>
             <section>
+                <span id='wifiOption'></span>
                 <h3>Wi-Fi options</h3>
                 <div className='option'>
                     <input type='radio' name='wifi' value='none'onChange={(e) => updateOptions(e.target.name, e.target.value)}/>
@@ -212,9 +237,9 @@ const Order = () => {
                     <button onClick={(e) => {
                         submitRequest(e)
                     }}>Submit</button>
-                    <button onClick={() => {
+                    {/* <button onClick={() => {
                         generateOrderCode()
-                    }}>Order</button>
+                    }}>Order</button> */}
                 </div>
             </section>
         </div>

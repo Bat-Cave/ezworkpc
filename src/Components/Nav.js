@@ -6,14 +6,13 @@ import logo from '../Cheese.png';
 
 
 const Nav = () => {
-
     return(
         <nav className='nav'>
-            <Link to='/'>Home</Link>
-            <Link to='/order'>Order</Link>
+            <Link to='/home' replace className={window.location.href.includes('home') ? 'linkActive' : ''}>Home</Link>
+            <Link to='/order' replace className={window.location.href.includes('order') ? 'linkActive' : ''}>Order</Link>
             <img src={logo} alt='logo'/>
-            <Link to='/about'>About</Link>
-            <Link to='/contact'>Contact</Link>
+            <Link to='/about' replace className={window.location.href.includes('about') ? 'linkActive' : ''}>About</Link>
+            <Link to='/contact' replace className={window.location.href.includes('contact') ? 'linkActive' : ''}>Contact</Link>
         </nav>
     )
 }
