@@ -24,7 +24,6 @@
     }
     .nav a{
         padding: 0 8px;
-        color: white;
     }
     .container{
       min-height: calc(100vh - 40px);

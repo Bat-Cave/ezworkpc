@@ -23,6 +23,8 @@ const Home = () => {
     let partsKeys = Object.keys(parts)
 
 useEffect(() => {
+    const CancelToken = axios.CancelToken;
+    const source = CancelToken.source();
 
     for(let i = 0; i < partsKeys.length; i++){
         const options = {
@@ -32,7 +34,8 @@ useEffect(() => {
         headers: {
             'x-rapidapi-key': 'd110ceafe9msheddf4de95aef5e2p1276b3jsn80ea3cfb285a',
             'x-rapidapi-host': 'amazon-price1.p.rapidapi.com'
-        }
+            },
+        cancelToken: source.token
         };
 
         axios.request(options).then(function (response) {
@@ -45,11 +48,17 @@ useEffect(() => {
                 [`${partsKeys[i]}`]: `${currency}${priceNew}`
             }))
         }).catch(function (error) {
-            console.error(error);
+            if (axios.isCancel(error)) {
+              console.log("cancelled");
+            } else {
+              throw error;
+            }
         })
 
     }
-
+    return function cleanup() {
+        source.cancel();
+    }
 }, [])
 
 useEffect(() => {
