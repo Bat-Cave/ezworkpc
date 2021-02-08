@@ -37,6 +37,14 @@ a:hover{
   color: rebeccapurple;
 }
 
+button{
+  border: none;
+  background: rebeccapurple;
+  color: white;
+  padding: 12px;
+  margin: 2px;
+}
+
 ::-webkit-scrollbar{
   width: 8px;
 }

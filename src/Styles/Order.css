@@ -37,9 +37,43 @@
     align-items: center;
     justify-content: space-between ;
 }
+.order .textInput{
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 16px 0;
+}
+.order .textInput div{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+.order .textInput div input{
+    margin: 2px 0;
+    width: 33%;
+}
+.order .textInput input{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between ;
+}
 
 .order input{
     margin-right: 12px;
+    border: none;
+    border-bottom: 2px solid rebeccapurple;
+    height: 40px;
+    padding: 2px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.order input:focus{
+    outline: none;
+}
+.order input:active{
+    outline: none;
 }
 
 .order .price{
