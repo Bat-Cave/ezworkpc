@@ -1,6 +1,7 @@
 import '../Styles/Home.css';
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
+import compcase from '../case-transparent.png';
 
 
 
@@ -15,7 +16,7 @@ const Home = () => {
         // storage500: 'B073SBX6TY',
         // storage1000: 'B073SB2MXT',
         // storage2000: 'B073SBW3VD',
-        mobo: 'B08F7J8XTV',
+        mobo: 'B079NYQQJJ',
         case: 'B084JJP2W9',
         wifi: 'B082NZYDDM'
     }
@@ -63,8 +64,7 @@ useEffect(() => {
         <div className='home'>
             <br></br>
             <section>
-                <h1>Welcome.</h1>
-                <p>I build workstation computers. Need one? or two? or 20?</p>
+                <h1>It's Easy Cheesy.</h1>
             </section>
             <section>
                 <div className='currentBuild'>
@@ -74,7 +74,7 @@ useEffect(() => {
                         <br></br>
                         <h4>Features:</h4>
                         <ul>
-                            <li>USB 3.0</li>
+                            <li>USB 3.1</li>
                             <li>HDMI, DVI, and Display Port</li>
                             <li>1 Gbe Ethernet</li>
                             <li>16 GB DDR4 3000MHz Memory</li>
@@ -82,7 +82,7 @@ useEffect(() => {
                             <li>Wi-Fi 6 & Bluetooth 5.0</li>
                         </ul>
                     </div>
-                    <img src='https://images-na.ssl-images-amazon.com/images/I/71HSqdcCs9L._AC_SL1500_.jpg'/>
+                    <img src={compcase}/>
                 </div>
                 <h3>Prices from Amazon.com</h3>
                 <div className='row'>
@@ -94,7 +94,7 @@ useEffect(() => {
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>Gigabyte A520M DS3H</h4>  
+                        <h4>Gigabyte GA-A320M-S2H</h4>  
                         <p>Motherboard</p>  
                     </div>
                     <div className='price'>{prices.mobo ? prices.mobo : <span className='loader'></span>}</div>

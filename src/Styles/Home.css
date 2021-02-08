@@ -59,6 +59,10 @@
     margin-left: 32px;
 }
 
+.home h1{
+    font-size: 4rem;
+    text-transform: uppercase;
+}
 .home h2{
     text-transform: uppercase;
 }
