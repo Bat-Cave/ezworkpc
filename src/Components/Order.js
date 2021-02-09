@@ -1,7 +1,9 @@
 import '../Styles/Order.css';
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
-
+import { init } from 'emailjs-com';
+import emailjs from 'emailjs-com';
+init("user_V9dVOdqrRCfPsTshTaIcD");
 
 
 const Order = () => {
@@ -142,10 +144,21 @@ const Order = () => {
             <h3 style='margin-left: 12px;'>Rico Hancock</h3>
         </div>
         </div>`;
-        await axios.post("/sendEmail", {emailTo, html, subject})
-        .then(res => {
-            console.log(res.data)
-        })
+
+        var templateParams = {
+            subject,
+            html,
+            to: emailTo,
+
+        };
+         
+
+        emailjs.send('default_service', 'template_wx84hwg', templateParams)
+            .then(function(response) {
+               console.log('SUCCESS!', response.status, response.text);
+            }, function(error) {
+               console.log('FAILED...', error);
+            });
 
         let toRicoEmail = `
         <div>
@@ -161,10 +174,20 @@ const Order = () => {
             <p>options: ${options.storage}, ${options.wifi}</p>
         </div>`
 
-        await axios.post("/sendEmail", {emailTo: 'ezworkpc@gmail.com', html: toRicoEmail, subject: 'New Order!'})
-        .then(res => {
-            console.log(res.data)
-        })
+        var params = {
+            html: toRicoEmail,
+            subject: `New Order - ${orderCode}`,
+            to: "ezworkpc@gmail.com",
+
+        };
+         
+
+        emailjs.send('default_service', 'template_wx84hwg', params)
+            .then(function(response) {
+               console.log('SUCCESS!', response.status, response.text);
+            }, function(error) {
+               console.log('FAILED...', error);
+            });
     };
 
 
