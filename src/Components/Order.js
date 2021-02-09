@@ -1,5 +1,6 @@
 import '../Styles/Order.css';
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from "axios";
 import { init } from 'emailjs-com';
 import emailjs from 'emailjs-com';
@@ -19,7 +20,9 @@ const Order = () => {
                                         shippingAddressState: '',
                                         shippingAddressZIP: ''
                                     })
-
+    let [orderSubmitted, setOrderSubmitted] = useState('');
+    let [orderReceived, setOrderReceived] = useState('');
+    let orderCode;
     let parts = {
         wifi: 'B082NZYDDM',
         storage250: 'B073SBV3XX',
@@ -27,6 +30,7 @@ const Order = () => {
         storage1000: 'B073SB2MXT',
         storage2000: 'B073SBW3VD'
     }
+    let r = '';
 
     let partsKeys = Object.keys(parts)
 
@@ -61,7 +65,6 @@ const Order = () => {
     }, [])
 
     let updateOptions = (name, value) => {
-        console.log(name, value)
         setOptions(prev => ({
             ...prev,
             [name]: value
@@ -73,6 +76,20 @@ const Order = () => {
             ...prev,
             [name]: value
         }))
+    }
+
+    let checkInputs = () => {
+        let inp = document.getElementsByClassName('check');
+        let errorFound = false;
+        for(let i = 0; i < inp.length; i++){
+            if(inp[i].value.length){
+                inp[i].classList.add('success')
+            }else{
+                inp[i].classList.add('error');
+                errorFound = true;
+            }
+        }
+        return errorFound
     }
 
     let generateOrderCode = () => {
@@ -114,8 +131,13 @@ const Order = () => {
             document.getElementById("wifiOption").scrollIntoView({behavior: 'smooth', block: 'start'});
             return
         }
+        let err = checkInputs();
+        if(err){
+            document.getElementById("contactInfo").scrollIntoView({behavior: 'smooth', block: 'start'});
+            return
+        }
         e.preventDefault();
-        let orderCode = await generateOrderCode();
+        orderCode = await generateOrderCode();
         let emailTo = inputs.email;
         let firstName = inputs.firstName;
         let lastName = inputs.lastName;
@@ -153,12 +175,12 @@ const Order = () => {
         };
          
 
-        emailjs.send('default_service', 'template_wx84hwg', templateParams)
-            .then(function(response) {
-               console.log('SUCCESS!', response.status, response.text);
-            }, function(error) {
-               console.log('FAILED...', error);
-            });
+        // emailjs.send('default_service', 'template_wx84hwg', templateParams)
+        //     .then(function(response) {
+        //        console.log('SUCCESS!', response.status, response.text);
+        //     }, function(error) {
+        //        console.log('FAILED...', error);
+        //     });
 
         let toRicoEmail = `
         <div>
@@ -182,14 +204,15 @@ const Order = () => {
         };
          
 
-        emailjs.send('default_service', 'template_wx84hwg', params)
-            .then(function(response) {
-               console.log('SUCCESS!', response.status, response.text);
-            }, function(error) {
-               console.log('FAILED...', error);
-            });
+        // emailjs.send('default_service', 'template_wx84hwg', params)
+        //     .then(function(response) {
+        //         console.log('SUCCESS!', response.status, response.text);
+        //         setOrderReceived(true)
+        //     }, function(error) {
+        //         console.log('FAILED...', error);
+        // });
+        setOrderSubmitted('submitted');
     };
-
 
     return(
         <div className='order'>
@@ -228,29 +251,30 @@ const Order = () => {
             </section>
             <section>
                 <h3>Contact Info</h3>
+                <span id='contactInfo'></span>
                 <div className='option textInput'>
                     <div>First Name:</div>
-                    <input type='text' name='firstName' value={inputs.name} placeholder='Enter First Name...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
+                    <input className='check' type='text' name='firstName' value={inputs.name} placeholder='Enter First Name...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
                 </div>
                 <div className='option textInput'>
                     <div>Last Name:</div>
-                    <input type='text' name='lastName' value={inputs.name} placeholder='Enter Last Name...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
+                    <input className='check' type='text' name='lastName' value={inputs.name} placeholder='Enter Last Name...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
                 </div>
                 <div className='option textInput'>
                     <div>Phone Number:</div>
-                    <input type='text' name='phone' value={inputs.name} placeholder='Enter Phone Number...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
+                    <input className='check' type='tel' name='phone' pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" value={inputs.name} placeholder='Enter Phone Number...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
                 </div>
                 <div className='option textInput'>
                     <div>Email Address:</div>
-                    <input type='text' name='email' value={inputs.name} placeholder='Enter Email Address...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
+                    <input className='check' type='email' name='email' value={inputs.name} placeholder='Enter Email Address...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
                 </div>
                 <div className='option textInput'>
                     <div>Shipping Address:</div>
-                    <input type='text' name='shippingAddressStreet' value={inputs.name} placeholder='Street...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
+                    <input className='check' type='text' name='shippingAddressStreet' value={inputs.name} placeholder='Street...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
                     <div>
-                        <input type='text' name='shippingAddressCity' value={inputs.name} placeholder='City...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
-                        <input type='text' name='shippingAddressState' value={inputs.name} placeholder='State...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
-                        <input type='text' name='shippingAddressZIP' value={inputs.name} placeholder='ZIP...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
+                        <input className='check' type='text' name='shippingAddressCity' value={inputs.name} placeholder='City...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
+                        <input className='check' type='text' name='shippingAddressState' value={inputs.name} placeholder='State...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
+                        <input className='check' type='text' name='shippingAddressZIP' value={inputs.name} placeholder='ZIP...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
                     </div>
                 </div>
             </section>
@@ -258,13 +282,25 @@ const Order = () => {
                 <h3>Finalize</h3>
                 <div className='option'>
                     <button onClick={(e) => {
-                        submitRequest(e)
+                        submitRequest(e);
                     }}>Submit</button>
-                    {/* <button onClick={() => {
-                        generateOrderCode()
-                    }}>Order</button> */}
                 </div>
             </section>
+            <div className={'confirmation ' + orderSubmitted}>
+                {!orderReceived ? (
+                    <div>
+                        <div className='loader'>
+                        </div>
+                        <Link to='/home'>Close</Link>
+                    </div>
+                ) : (
+                    <div>
+                        <h1>Order Received!</h1>
+                        <h4>Check your email for a confirmation email.</h4>
+                        <Link to='/home'>Done</Link>
+                    </div>
+                )}
+            </div>
         </div>
     )
 }
