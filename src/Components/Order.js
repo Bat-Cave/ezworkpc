@@ -10,7 +10,7 @@ import logo from '../Cheese.png';
 init("user_V9dVOdqrRCfPsTshTaIcD");
 
 
-const Order = () => {
+const Order = (props) => {
     let [prices, setPrices] = useState({});
     let [options, setOptions] = useState({});
     let [inputs, setInputs] = useState({ 
@@ -43,6 +43,7 @@ const Order = () => {
     let r = '';
 
     let partsKeys = Object.keys(parts)
+
 
     useEffect(() => {
 
@@ -231,9 +232,9 @@ const Order = () => {
 
         emailjs.send('default_service', 'template_wx84hwg', params)
             .then(function(response) {
-                console.log('SUCCESS!', response.status, response.text);
                 setOrderReceived(true)
                 setIsLoading(false)
+                props.history.push('/thanks')
             }, function(error) {
                 console.log('FAILED...', error);
         });
@@ -425,9 +426,9 @@ const Order = () => {
                     </div>
                     <div className='buttons'>
                         <div>
-                            <p>By clicking submit, I accept the&nbsp;</p>
+                            <p>By clicking submit, I accept the&nbsp;
                             <a id='terms-and-conditions' href={termsAndConditions} download> Terms and Conditions</a>
-                            <p>.</p>
+                            </p>
                         </div>
                     </div>
                 </section>

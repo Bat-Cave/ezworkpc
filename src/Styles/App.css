@@ -68,3 +68,9 @@ button:hover{
 ::-webkit-scrollbar-thumb{
   background: white;
 }
+
+@media only screen and (max-width: 500px) {
+  .container{
+    padding: 32px 8px;
+  }
+}

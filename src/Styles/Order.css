@@ -281,6 +281,11 @@
     text-align: center;
     margin: 0;
 }
+.order .submitted .buttons div p{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 .order .buttons a{
     width: 40%;
     height: 50px;
@@ -315,9 +320,9 @@
 .order #tacos{
     position: fixed;
     right: 4px;
-    bottom: 4px;
+    top: 4px;
     background: transparent;
-    width: 20%;
+    width: auto;
     height: calc(100% - 8px);
     z-index: 1111111;
     display: flex;
@@ -328,29 +333,24 @@
     transition: all .25s ease;
 }
 .order #tacos div{
+    width: 250px;
     display: flex;
     justify-content: space-between;
     margin: 4px 0;
     padding: 12px 4px;
-    background: rgba(102, 51, 153, 0.404);
+    background: rebeccapurple;
     position: relative;
-}
-.order #tacos div:before{
-    content: '';
-    background: url('../Cheese.png');
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    display: block;
-
+    border: 2px solid black;
+    border-radius: 5px;
+    animation: fade-in-out 5.1s 1 ease;
 }
 .order #tacos p{
     width: 80%;
+    color: white;
 }
 .order #tacos p:first-of-type{
     color: red;
+    font-weight: 700;
     width: 20%;
 }
 
@@ -388,6 +388,12 @@
     0%{opacity: 0;}
     100%{opacity: 1;}
 }
+@keyframes fade-in-out {
+    0%{opacity: 0;}
+    10%{opacity: 1;}
+    95%{opacity: 1;}
+    100%{opacity: 0;}
+}
 
 @media only screen and (max-width: 900px) {
     .order section{
@@ -398,5 +404,27 @@
         align-items: center;
         justify-content: center;
         margin: 16px 0;
+    }
+    #quant-element{
+        width: 80%;
+        height: 75px;
+    }
+    #quant-element *{
+        height: 75px;
+    }
+    #quant-element .quant-button{
+        height: 75px;
+    }
+    .order #tacos{
+        min-height: 50%;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .order #tacos div{
+        width: 150px;
+        font-size: 11px;
+    }
+    .order .submitted .buttons div p{
+        flex-direction: column;
     }
   }
