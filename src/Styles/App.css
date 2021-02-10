@@ -48,6 +48,13 @@ button{
   color: white;
   padding: 12px;
   margin: 2px;
+  transition: all .25s ease;
+  cursor: pointer;
+}
+
+button:hover{
+  background: white;
+  color: rebeccapurple;
 }
 
 ::-webkit-scrollbar{

@@ -1,6 +1,7 @@
 import '../Styles/Order.css';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { BsFillCaretDownFill, BsFillCaretUpFill } from 'react-icons/bs';
 import axios from "axios";
 import { init } from 'emailjs-com';
 import emailjs from 'emailjs-com';
@@ -18,7 +19,8 @@ const Order = () => {
                                         shippingAddressStreet: '',
                                         shippingAddressCity: '',
                                         shippingAddressState: '',
-                                        shippingAddressZIP: ''
+                                        shippingAddressZIP: '',
+                                        quantity: 1
                                     })
     let [orderSubmitted, setOrderSubmitted] = useState('');
     let [orderReceived, setOrderReceived] = useState('');
@@ -211,8 +213,26 @@ const Order = () => {
         //     }, function(error) {
         //         console.log('FAILED...', error);
         // });
-        setOrderSubmitted('submitted');
     };
+
+    const updateQuantity = (val) => {
+        if(val === '+'){
+            if(inputs.quantity < 10){
+                setInputs(prev => ({
+                    ...prev,
+                    quantity: inputs.quantity + 1
+                }))
+            }
+        }
+        if(val === '-'){
+            if(inputs.quantity > 1){
+                setInputs(prev => ({
+                    ...prev,
+                    quantity: inputs.quantity - 1
+                }))
+            }
+        }
+    }
 
     return(
         <div className='order'>
@@ -250,56 +270,67 @@ const Order = () => {
                 </div>
             </section>
             <section>
-                <h3>Contact Info</h3>
-                <span id='contactInfo'></span>
-                <div className='option textInput'>
-                    <div>First Name:</div>
-                    <input className='check' type='text' name='firstName' value={inputs.name} placeholder='Enter First Name...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
-                </div>
-                <div className='option textInput'>
-                    <div>Last Name:</div>
-                    <input className='check' type='text' name='lastName' value={inputs.name} placeholder='Enter Last Name...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
-                </div>
-                <div className='option textInput'>
-                    <div>Phone Number:</div>
-                    <input className='check' type='tel' name='phone' pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" value={inputs.name} placeholder='Enter Phone Number...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
-                </div>
-                <div className='option textInput'>
-                    <div>Email Address:</div>
-                    <input className='check' type='email' name='email' value={inputs.name} placeholder='Enter Email Address...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
-                </div>
-                <div className='option textInput'>
-                    <div>Shipping Address:</div>
-                    <input className='check' type='text' name='shippingAddressStreet' value={inputs.name} placeholder='Street...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
-                    <div>
-                        <input className='check' type='text' name='shippingAddressCity' value={inputs.name} placeholder='City...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
-                        <input className='check' type='text' name='shippingAddressState' value={inputs.name} placeholder='State...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
-                        <input className='check' type='text' name='shippingAddressZIP' value={inputs.name} placeholder='ZIP...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
+                <h3>Quantity</h3>
+                <div className='option textInput' id='quantity'>
+                    <h2>I need</h2>
+                    <div id='quant-element'>
+                        <button className='quant-button' onClick={() => updateQuantity('-')}><BsFillCaretDownFill/></button>
+                        <input readOnly className='check' type='number' name='quantity' min='1' max='10' value={inputs.quantity} onChange={(e) => handleInput(e.target.name, e.target.value)}/>
+                        <button className='quant-button' onClick={() => updateQuantity('+')}><BsFillCaretUpFill /></button>
                     </div>
+                    <h2>{inputs.quantity > 1 ? 'computers.' : 'computer.'}</h2>
                 </div>
             </section>
             <section>
-                <h3>Finalize</h3>
-                <div className='option'>
+                <div className='option buttons'>
                     <button onClick={(e) => {
-                        submitRequest(e);
-                    }}>Submit</button>
+                        setOrderSubmitted('submitted');
+                        setTimeout(() => {
+                            document.getElementById("contactInfo").scrollIntoView({behavior: 'smooth', block: 'start'});
+                        }, 500)
+                    }}>Continue</button>
                 </div>
+            <span id='contactInfo'></span>
             </section>
             <div className={'confirmation ' + orderSubmitted}>
-                {!orderReceived ? (
-                    <div>
-                        <div className='loader'>
+                <section>
+                    <h2>Contact Info</h2>
+                    <div className='option textInput'>
+                        <div>First Name:</div>
+                        <input className='check' type='text' name='firstName' value={inputs.firstName} placeholder='Enter First Name...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
+                    </div>
+                    <div className='option textInput'>
+                        <div>Last Name:</div>
+                        <input className='check' type='text' name='lastName' value={inputs.name} placeholder='Enter Last Name...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
+                    </div>
+                    <div className='option textInput'>
+                        <div>Phone Number:</div>
+                        <input className='check' type='tel' name='phone' pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" value={inputs.name} placeholder='Enter Phone Number...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
+                    </div>
+                    <div className='option textInput'>
+                        <div>Email Address:</div>
+                        <input className='check' type='email' name='email' value={inputs.name} placeholder='Enter Email Address...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
+                    </div>
+                    <div className='option textInput'>
+                        <div>Shipping Address:</div>
+                        <input className='check' type='text' name='shippingAddressStreet' value={inputs.name} placeholder='Street...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
+                        <div>
+                            <input className='check' type='text' name='shippingAddressCity' value={inputs.name} placeholder='City...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
+                            <input className='check' type='text' name='shippingAddressState' value={inputs.name} placeholder='State...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
+                            <input className='check' type='text' name='shippingAddressZIP' value={inputs.name} placeholder='ZIP...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
                         </div>
-                        <Link to='/home'>Close</Link>
                     </div>
-                ) : (
-                    <div>
-                        <h1>Order Received!</h1>
-                        <h4>Check your email for a confirmation email.</h4>
-                        <Link to='/home'>Done</Link>
+                </section>
+                <section>
+                    <div className='option buttons'>
+                        <button onClick={(e) => {
+                            submitRequest(e);
+                        }}>Submit</button>
+                        <Link replace to='/order' onClick={(e) => {
+                        setOrderSubmitted('');
+                    }}>Cancel</Link>
                     </div>
-                )}
+                </section>
             </div>
         </div>
     )
