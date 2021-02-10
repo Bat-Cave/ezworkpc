@@ -5,6 +5,8 @@ import { BsFillCaretDownFill, BsFillCaretUpFill } from 'react-icons/bs';
 import axios from "axios";
 import { init } from 'emailjs-com';
 import emailjs from 'emailjs-com';
+import termsAndConditions from '../../src/TermsandConditions.pdf';
+import logo from '../Cheese.png';
 init("user_V9dVOdqrRCfPsTshTaIcD");
 
 
@@ -24,13 +26,19 @@ const Order = () => {
                                     })
     let [orderSubmitted, setOrderSubmitted] = useState('');
     let [orderReceived, setOrderReceived] = useState('');
+    let [isLoading, setIsLoading] = useState(false);
     let orderCode;
     let parts = {
-        wifi: 'B082NZYDDM',
+        cpu: 'B079D3DBNM',
+        ram: 'B088T2KNZ4',
+        psu: 'B07DTP6SLJ',
         storage250: 'B073SBV3XX',
         storage500: 'B073SBX6TY',
         storage1000: 'B073SB2MXT',
-        storage2000: 'B073SBW3VD'
+        storage2000: 'B073SBW3VD',
+        mobo: 'B079NYQQJJ',
+        case: 'B084JJP2W9',
+        wifi: 'B082NZYDDM'
     }
     let r = '';
 
@@ -66,6 +74,22 @@ const Order = () => {
 
     }, [])
 
+    const makeTaco = (type, text) => {
+        let tacos = document.getElementById('tacos');
+        let taco = document.createElement('div');
+        let t = document.createElement('p');
+        t.innerHTML = type;
+        let message = document.createElement('p');
+        message.innerHTML = text;
+        taco.appendChild(t);
+        taco.appendChild(message);
+        tacos.appendChild(taco)
+        setTimeout(() => {
+            taco.remove();
+        }, 5000)
+    }
+
+
     let updateOptions = (name, value) => {
         setOptions(prev => ({
             ...prev,
@@ -93,6 +117,7 @@ const Order = () => {
         }
         return errorFound
     }
+    
 
     let generateOrderCode = () => {
         function getRandomInt(min, max) {
@@ -125,17 +150,13 @@ const Order = () => {
     }
 
     const submitRequest = async (e) => {
-        if(!options.storage){
-            document.getElementById("storageOption").scrollIntoView({behavior: 'smooth'});
-            return
-        }
-        if(!options.wifi){
-            document.getElementById("wifiOption").scrollIntoView({behavior: 'smooth', block: 'start'});
-            return
-        }
         let err = checkInputs();
         if(err){
+            makeTaco('Error', 'Make sure to fill out all contact info fields.')
             document.getElementById("contactInfo").scrollIntoView({behavior: 'smooth', block: 'start'});
+            setTimeout(() => {
+                setIsLoading(false);
+            }, 100)
             return
         }
         e.preventDefault();
@@ -177,12 +198,12 @@ const Order = () => {
         };
          
 
-        // emailjs.send('default_service', 'template_wx84hwg', templateParams)
-        //     .then(function(response) {
-        //        console.log('SUCCESS!', response.status, response.text);
-        //     }, function(error) {
-        //        console.log('FAILED...', error);
-        //     });
+        emailjs.send('default_service', 'template_wx84hwg', templateParams)
+            .then(function(response) {
+               console.log('SUCCESS!', response.status, response.text);
+            }, function(error) {
+               console.log('FAILED...', error);
+            });
 
         let toRicoEmail = `
         <div>
@@ -195,7 +216,9 @@ const Order = () => {
             <p>City: ${addressCity}</p>
             <p>State: ${addressState}</p>
             <p>ZIP: ${addressZIP}</p>
-            <p>options: ${options.storage}, ${options.wifi}</p>
+            <p>Storage: ${options.storage}</p>
+            <p>Wifi: ${options.wifi}</p>
+            <p>Quantity: ${inputs.quantity}</p>
         </div>`
 
         var params = {
@@ -206,13 +229,14 @@ const Order = () => {
         };
          
 
-        // emailjs.send('default_service', 'template_wx84hwg', params)
-        //     .then(function(response) {
-        //         console.log('SUCCESS!', response.status, response.text);
-        //         setOrderReceived(true)
-        //     }, function(error) {
-        //         console.log('FAILED...', error);
-        // });
+        emailjs.send('default_service', 'template_wx84hwg', params)
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                setOrderReceived(true)
+                setIsLoading(false)
+            }, function(error) {
+                console.log('FAILED...', error);
+        });
     };
 
     const updateQuantity = (val) => {
@@ -238,8 +262,63 @@ const Order = () => {
         <div className='order'>
             <h2>Options</h2>
             <section>
+                <h3>Quantity</h3>
+                <div className='option textInput' id='quantity'>
+                    <h2>I need</h2>
+                    <div id='quant-element'>
+                        <button className='quant-button' onClick={() => updateQuantity('-')}><BsFillCaretDownFill/></button>
+                        <input readOnly className='check' type='number' name='quantity' min='1' max='10' value={inputs.quantity} onChange={(e) => handleInput(e.target.name, e.target.value)}/>
+                        <button className='quant-button' onClick={() => updateQuantity('+')}><BsFillCaretUpFill /></button>
+                    </div>
+                    <h2>{inputs.quantity > 1 ? 'computers.' : 'computer.'}</h2>
+                </div>
+                <div className='p'>
+                    <p>Limit 10 per order.</p>
+                </div>
+            </section>
+            <section>
+                <h2 className='package'>Each computer includes:</h2>
+                
+                <div className='row'>
+                    <div>
+                        <h4>Rosewill SRM-01B</h4>  
+                        <p>Case</p>  
+                    </div>
+                    <div className='price'>{prices.case ? prices.case : <span className='loader'></span>}</div>
+                </div>
+                <div className='row'>
+                    <div>
+                        <h4>Gigabyte GA-A320M-S2H</h4>  
+                        <p>Motherboard</p>  
+                    </div>
+                    <div className='price'>{prices.mobo ? prices.mobo : <span className='loader'></span>}</div>
+                </div>
+                <div className='row'>
+                    <div>
+                        <h4>AMD Ryzen 3 2200G</h4>  
+                        <p>CPU/GPU</p>  
+                    </div>
+                    <div className='price'>{prices.cpu ? prices.cpu : <span className='loader'></span>}</div>
+                </div>
+                <div className='row'>
+                    <div>
+                        <h4>16GB OLOy DDR4 RAM</h4>  
+                        <p>RAM</p>  
+                    </div>
+                    <div className='price'>{prices.ram ? prices.ram : <span className='loader'></span>}</div>
+                </div>
+                <div className='row'>
+                    <div>
+                        <h4>EVGA 450 Watt 80+ Bronze</h4>  
+                        <p>PSU</p>  
+                    </div>
+                    <div className='price'>{prices.psu ? prices.psu : <span className='loader'></span>}</div>
+                </div>
+            </section>
+            <section>
                 <span id='storageOption'></span>
                 <h3>Storage options</h3>
+                <p>Select how much storage you need each computer to have.</p>
                 <div className='option'>
                     <input type='radio' name='storage' value='storage250' onChange={(e) => updateOptions(e.target.name, e.target.value)}/>
                     <div>250 GB M.2 SSD {prices.storage250 ? <span className='price'>{prices.storage250}</span> : <span className='loader'></span>}</div>
@@ -260,6 +339,7 @@ const Order = () => {
             <section>
                 <span id='wifiOption'></span>
                 <h3>Wi-Fi options</h3>
+                <p>Do you want each computer to have a Wi-Fi card?</p>
                 <div className='option'>
                     <input type='radio' name='wifi' value='none'onChange={(e) => updateOptions(e.target.name, e.target.value)}/>
                     <div>Ethernet Port Only <span className='price'>$0.00</span></div>
@@ -270,25 +350,29 @@ const Order = () => {
                 </div>
             </section>
             <section>
-                <h3>Quantity</h3>
-                <div className='option textInput' id='quantity'>
-                    <h2>I need</h2>
-                    <div id='quant-element'>
-                        <button className='quant-button' onClick={() => updateQuantity('-')}><BsFillCaretDownFill/></button>
-                        <input readOnly className='check' type='number' name='quantity' min='1' max='10' value={inputs.quantity} onChange={(e) => handleInput(e.target.name, e.target.value)}/>
-                        <button className='quant-button' onClick={() => updateQuantity('+')}><BsFillCaretUpFill /></button>
-                    </div>
-                    <h2>{inputs.quantity > 1 ? 'computers.' : 'computer.'}</h2>
-                </div>
-            </section>
-            <section>
                 <div className='option buttons'>
-                    <button onClick={(e) => {
-                        setOrderSubmitted('submitted');
-                        setTimeout(() => {
-                            document.getElementById("contactInfo").scrollIntoView({behavior: 'smooth', block: 'start'});
-                        }, 500)
-                    }}>Continue</button>
+                    {isLoading ? (
+                        <div className='loader'></div>
+                        ) : (
+                        <button onClick={(e) => {
+                            if(!options.storage){
+                                makeTaco('Error', 'Select a storage option.')
+                                document.getElementById("storageOption").scrollIntoView({behavior: 'smooth'});
+                                return
+                            }
+                            if(!options.wifi){
+                                makeTaco('Error', 'Select a Wi-Fi option.')
+                                document.getElementById("wifiOption").scrollIntoView({behavior: 'smooth', block: 'start'});
+                                return
+                            }
+                            setOrderSubmitted('submitted');
+                            setIsLoading(true)
+                            setTimeout(() => {
+                                document.getElementById("contactInfo").scrollIntoView({behavior: 'smooth', block: 'start'});
+                                setIsLoading(false)
+                            }, 500)
+                        }}>Continue</button>)
+                    }
                 </div>
             <span id='contactInfo'></span>
             </section>
@@ -323,15 +407,32 @@ const Order = () => {
                 </section>
                 <section>
                     <div className='option buttons'>
+                    {isLoading ? (
+                        <div className='loader'></div>
+                        ) : (
                         <button onClick={(e) => {
                             submitRequest(e);
-                        }}>Submit</button>
+                            setIsLoading(true)
+                        }}>Submit</button>)
+                    }
+                    {isLoading ? (
+                        <div className='loader'></div>
+                        ) : (
                         <Link replace to='/order' onClick={(e) => {
-                        setOrderSubmitted('');
-                    }}>Cancel</Link>
+                            setOrderSubmitted('');
+                        }}>Cancel</Link>)
+                    }
+                    </div>
+                    <div className='buttons'>
+                        <div>
+                            <p>By clicking submit, I accept the&nbsp;</p>
+                            <a id='terms-and-conditions' href={termsAndConditions} download> Terms and Conditions</a>
+                            <p>.</p>
+                        </div>
                     </div>
                 </section>
             </div>
+            <div id='tacos'></div>
         </div>
     )
 }

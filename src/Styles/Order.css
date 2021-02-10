@@ -37,6 +37,12 @@
     display: flex;
     align-items: center;
 }
+.order .p{
+    width: 100%;
+    text-align: center;
+    margin: 4px 0;
+    margin-top: -8px;
+}
 
 .order .option div{
     width: 100%;
@@ -153,6 +159,8 @@
     display: block;
     width: 20px;
     height: 20px;
+    max-width: 20px;
+    max-height: 20px;
     border-top: 2px solid black;
     border-right: 2px solid black;
     border-bottom: 2px solid black;
@@ -182,6 +190,21 @@
     background: rgb(52, 190, 52);
 }
 
+.order .check{
+    color: black;
+}
+
+.order #terms-and-conditions{
+    width: auto;
+    height: auto;
+    background: transparent;
+    color: blue;
+    text-decoration: underline;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+
+}
 .order .confirmation{
     width: 100%;
     min-height: 100vh;
@@ -244,6 +267,15 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+}
+.order .submitted .buttons div{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -269,12 +301,83 @@
     display: block;
     width: 20px;
     height: 20px;
+    max-width: 20px;
+    max-height: 20px;
     border-top: 2px solid black;
     border-right: 2px solid black;
     border-bottom: 2px solid black;
     border-left: 2px solid transparent;
     border-radius: 50%;
     animation: rotate 1s infinite;
+}
+
+
+.order #tacos{
+    position: fixed;
+    right: 4px;
+    bottom: 4px;
+    background: transparent;
+    width: 20%;
+    height: calc(100% - 8px);
+    z-index: 1111111;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.order #tacos *{
+    transition: all .25s ease;
+}
+.order #tacos div{
+    display: flex;
+    justify-content: space-between;
+    margin: 4px 0;
+    padding: 12px 4px;
+    background: rgba(102, 51, 153, 0.404);
+    position: relative;
+}
+.order #tacos div:before{
+    content: '';
+    background: url('../Cheese.png');
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+
+}
+.order #tacos p{
+    width: 80%;
+}
+.order #tacos p:first-of-type{
+    color: red;
+    width: 20%;
+}
+
+
+.order .row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.order .row p{
+    font-size: 11px;
+    font-style: italic;
+}
+
+.order .row .price{
+    font-size: 16px;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.order .package{
+    margin: 20px 0 40px 0;
+    text-align: center;
+    border-bottom: 1px solid black;
+    width: 100%;
 }
 
 @keyframes rotate {
