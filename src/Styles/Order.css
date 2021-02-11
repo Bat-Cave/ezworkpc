@@ -120,6 +120,9 @@
     border-bottom: none;
     text-transform: none;
 }
+#quantity h2:first-of-type{
+    text-align: right;
+}
 
 #quantity input::-webkit-outer-spin-button,
 #quantity input::-webkit-inner-spin-button {
@@ -426,5 +429,8 @@
     }
     .order .submitted .buttons div p{
         flex-direction: column;
+    }
+    #quantity h2:first-of-type{
+        text-align: center;
     }
   }

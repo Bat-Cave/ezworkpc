@@ -18,6 +18,16 @@
     margin: 50px 20px 0 20px;
 }
 
+.nav .home-icon{
+    padding: 0;
+}
+.nav .home-icon:hover{
+    background: rebeccapurple;
+    color: white;
+    padding: 0;
+
+}
+
 @media only screen and (max-width: 500px) {
     .nav {
         height: 40px;
