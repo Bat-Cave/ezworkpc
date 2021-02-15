@@ -14,7 +14,7 @@ body{
 .container{
   width: 100%;
   min-height: calc(100vh - 60px);
-  background: white;
+  background: transparent;
   padding: 32px 20%;
   transition: padding .25s ease;
   position: relative;
@@ -50,11 +50,13 @@ button{
   margin: 2px;
   transition: all .25s ease;
   cursor: pointer;
+  border: 2px solid white;
 }
 
 button:hover{
   background: white;
   color: rebeccapurple;
+  border: 2px solid rebeccapurple;
 }
 
 ::-webkit-scrollbar{

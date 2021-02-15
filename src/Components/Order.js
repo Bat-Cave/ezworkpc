@@ -11,7 +11,34 @@ init("user_V9dVOdqrRCfPsTshTaIcD");
 
 
 const Order = (props) => {
-    let [prices, setPrices] = useState({});
+    let parts = {
+        cpu: 'B079D3DBNM',
+        ram: 'B088T2KNZ4',
+        psu: 'B07DTP6SLJ',
+        storage250: 'B07YFF8879',
+        storage500: 'B07YFF3JCN',
+        storage1000: 'B07YFFX5MD',
+        storage2000: 'B08K4NP5DQ',
+        mobo: 'B079NYQQJJ',
+        case: 'B084JJP2W9',
+        wifi: 'B082NZYDDM'
+    }
+    let [prices, setPrices] = useState({
+                                        none: '0'
+                                    });
+    let [toSum, setToSum] = useState({
+                                        cpu: 'cpu',
+                                        ram: 'ram',
+                                        psu: 'psu',
+                                        mobo: 'mobo',
+                                        case: 'case',
+                                    });
+    let [sum, setSum] = useState('');
+    let [sumTotal, setSumTotal] = useState('');
+    let [optionsPrices, setOptionsPrices] = useState({
+                                        storage: '0',
+                                        wifi: '0'
+                                    });
     let [options, setOptions] = useState({});
     let [inputs, setInputs] = useState({ 
                                         firstName: '',
@@ -28,22 +55,9 @@ const Order = (props) => {
     let [orderReceived, setOrderReceived] = useState('');
     let [isLoading, setIsLoading] = useState(false);
     let orderCode;
-    let parts = {
-        cpu: 'B079D3DBNM',
-        ram: 'B088T2KNZ4',
-        psu: 'B07DTP6SLJ',
-        storage250: 'B073SBV3XX',
-        storage500: 'B073SBX6TY',
-        storage1000: 'B073SB2MXT',
-        storage2000: 'B073SBW3VD',
-        mobo: 'B079NYQQJJ',
-        case: 'B084JJP2W9',
-        wifi: 'B082NZYDDM'
-    }
     let r = '';
 
     let partsKeys = Object.keys(parts)
-
 
     useEffect(() => {
 
@@ -74,6 +88,30 @@ const Order = (props) => {
         }
 
     }, [])
+
+    useEffect(() => {
+        let sum = 0;
+        for(let p = 0; p < Object.keys(toSum).length; p++){
+            if(prices[toSum[Object.keys(toSum)[p]]]){
+                sum += (+prices[Object.keys(toSum)[p]].slice(1));
+            }
+        }
+        sum += +optionsPrices.storage || 0;
+        sum += +optionsPrices.wifi || 0;
+
+        setSum(`$${sum.toFixed(2)}`)
+        setSumTotal(`$${sum.toFixed(2)}`)
+    }, [prices, toSum])
+
+    useEffect(() => {
+        let total = 0;
+        total += +sum.slice(1);
+        total += +optionsPrices.storage.slice(1);
+        total += +optionsPrices.wifi.slice(1);
+
+        setSumTotal(`$${total.toFixed(2)}`)
+    }, [optionsPrices])
+
 
     const makeTaco = (type, text) => {
         let tacos = document.getElementById('tacos');
@@ -261,9 +299,12 @@ const Order = (props) => {
 
     return(
         <div className='order'>
-            <h2>Options</h2>
             <section>
-                <h3>Quantity</h3>
+                <h1>Let's get this rolling.</h1>
+            </section>
+            <h2>Order</h2>
+            <section>
+                <h3>How many computers do you need?</h3>
                 <div className='option textInput' id='quantity'>
                     <h2>I need</h2>
                     <div id='quant-element'>
@@ -321,19 +362,43 @@ const Order = (props) => {
                 <h3>Storage options</h3>
                 <p>Select how much storage you need each computer to have.</p>
                 <div className='option'>
-                    <input type='radio' name='storage' value='storage250' onChange={(e) => updateOptions(e.target.name, e.target.value)}/>
+                    <input type='radio' name='storage' value='storage250' onChange={(e) => {
+                        setOptionsPrices(prev=>({
+                            ...prev,
+                            storage: prices[e.target.value]
+                        }))
+                        updateOptions(e.target.name, e.target.value)
+                    }}/>
                     <div>250 GB M.2 SSD {prices.storage250 ? <span className='price'>{prices.storage250}</span> : <span className='loader'></span>}</div>
                 </div>
                 <div className='option'>
-                    <input type='radio' name='storage' value='storage500' onChange={(e) => updateOptions(e.target.name, e.target.value)}/>
+                    <input type='radio' name='storage' value='storage500' onChange={(e) => {
+                        setOptionsPrices(prev=>({
+                            ...prev,
+                            storage: prices[e.target.value]
+                        }))
+                        updateOptions(e.target.name, e.target.value)
+                    }}/>
                     <div>500 GB M.2 SSD {prices.storage500 ? <span className='price'>{prices.storage500}</span> : <span className='loader'></span>}</div>
                 </div>
                 <div className='option'>
-                    <input type='radio' name='storage' value='storage1000' onChange={(e) => updateOptions(e.target.name, e.target.value)}/>
+                    <input type='radio' name='storage' value='storage1000' onChange={(e) => {
+                        setOptionsPrices(prev=>({
+                            ...prev,
+                            storage: prices[e.target.value]
+                        }))
+                        updateOptions(e.target.name, e.target.value)
+                    }}/>
                     <div>1000 GB M.2 SSD {prices.storage1000 ? <span className='price'>{prices.storage1000}</span> : <span className='loader'></span>}</div>
                 </div>
                 <div className='option'>
-                    <input type='radio' name='storage' value='storage2000' onChange={(e) => updateOptions(e.target.name, e.target.value)}/>
+                    <input type='radio' name='storage' value='storage2000' onChange={(e) => {
+                        setOptionsPrices(prev=>({
+                            ...prev,
+                            storage: prices[e.target.value]
+                        }))
+                        updateOptions(e.target.name, e.target.value)
+                    }}/>
                     <div>2000 GB M.2 SSD {prices.storage2000 ? <span className='price'>{prices.storage2000}</span> : <span className='loader'></span>}</div>
                 </div>
             </section>
@@ -342,13 +407,32 @@ const Order = (props) => {
                 <h3>Wi-Fi options</h3>
                 <p>Do you want each computer to have a Wi-Fi card?</p>
                 <div className='option'>
-                    <input type='radio' name='wifi' value='none'onChange={(e) => updateOptions(e.target.name, e.target.value)}/>
+                    <input type='radio' name='wifi' value='none' onChange={(e) => {
+                        setOptionsPrices(prev=>({
+                            ...prev,
+                            wifi: prices[e.target.value]
+                        }))
+                        updateOptions(e.target.name, e.target.value)
+                        }}/>
                     <div>Ethernet Port Only <span className='price'>$0.00</span></div>
                 </div>
                 <div className='option'>
-                    <input type='radio' name='wifi' value='wificard' onChange={(e) => updateOptions(e.target.name, e.target.value)}/>
+                    <input type='radio' name='wifi' value='wifi' onChange={(e) =>{
+                        setOptionsPrices(prev=>({
+                            ...prev,
+                            wifi: prices[e.target.value]
+                        }))
+                        updateOptions(e.target.name, e.target.value)
+                        }}/>
                     <div>Ethernet Port & Wi-Fi {prices.wifi ? <span className='price'>{prices.wifi}</span> : <span className='loader'></span>}</div>
                 </div>
+            </section>
+            <section>
+                <div className='option total'>
+                    <div>Cost per Computer: <span className='price'>*{sumTotal}</span>
+                    </div>
+                </div>
+                <p className='disclaimer'>*Price pre-taxes. Does not include $100.00 labor fee or shipping fee.</p>
             </section>
             <section>
                 <div className='option buttons'>

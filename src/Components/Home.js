@@ -12,10 +12,10 @@ const Home = () => {
         cpu: 'B079D3DBNM',
         ram: 'B088T2KNZ4',
         psu: 'B07DTP6SLJ',
-        storage250: 'B073SBV3XX',
-        // storage500: 'B073SBX6TY',
-        // storage1000: 'B073SB2MXT',
-        // storage2000: 'B073SBW3VD',
+        storage250: 'B07YFF8879',
+        // storage500: 'B07YFF3JCN',
+        // storage1000: 'B07YFFX5MD',
+        // storage2000: 'B08K4NP5DQ',
         mobo: 'B079NYQQJJ',
         case: 'B084JJP2W9',
         wifi: 'B082NZYDDM'
@@ -150,7 +150,7 @@ useEffect(() => {
                     </div>
                     <div className='price'>*{sum}</div>
                 </div>
-                <p className='disclaimer'>*This is not the final price. This is only an estimation based on the prices for the products found on Amazon.com. Final price will include a labor fee.</p>
+                <p className='disclaimer'>*Not the final price. This is only an estimation based on the prices for the products found on Amazon.com.</p>
             </section>
         </div>
     )

@@ -3,7 +3,6 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    overflow-x: hidden;
     flex-wrap: nowrap;
 }
 
@@ -12,6 +11,11 @@
     padding: 32px 10%;
 }
 
+.order h1{
+    font-size: 4rem;
+    text-transform: uppercase;
+    text-align: center;
+}
 .order h2{
     width: 100%;
     text-align: center;
@@ -20,22 +24,36 @@
     border-bottom: 1px solid black;
 }
 
+
 .order section{
     width: 60%;
     display: flex;
     flex-direction: column;
     margin: 32px 0;
     transition: all .25s ease;
+    background: white;
+    padding: 12px;
 }
+
 
 .order section h3{
     width: 100%;
 }
 
 .order .option {
-    margin: 4px 4px 4px 32px;
+    margin: 4px 4px 4px 12px;
     display: flex;
     align-items: center;
+}
+.order .total {
+    margin: 4px 4px 4px 4px;
+    display: flex;
+    align-items: center;
+    border-top: 2px solid black;
+}
+.order .disclaimer{
+    font-size: 10px;
+    font-style: italic;
 }
 .order .p{
     width: 100%;
@@ -95,6 +113,7 @@
     border-top: 2px solid rebeccapurple;
     font-size: 24px;
     font-weight: 600;
+    background: white;
 }
 #quant-element button{
     margin: 0;
@@ -106,6 +125,7 @@
     align-items: center;
     cursor: pointer;
     font-size: 24px;
+    border: 2px solid rebeccapurple;
 }
 #quant-element button:hover{
     color: white;
@@ -119,6 +139,7 @@
     width: 35%;
     border-bottom: none;
     text-transform: none;
+    text-align: left;
 }
 #quantity h2:first-of-type{
     text-align: right;
@@ -341,7 +362,7 @@
     justify-content: space-between;
     margin: 4px 0;
     padding: 12px 4px;
-    background: rebeccapurple;
+    background: #fdd616;;
     position: relative;
     border: 2px solid black;
     border-radius: 5px;
@@ -349,7 +370,7 @@
 }
 .order #tacos p{
     width: 80%;
-    color: white;
+    color: black;
 }
 .order #tacos p:first-of-type{
     color: red;
@@ -364,7 +385,6 @@
     width: 100%;
     margin-bottom: 12px;
 }
-
 .order .row p{
     font-size: 11px;
     font-style: italic;
@@ -407,6 +427,9 @@
         align-items: center;
         justify-content: center;
         margin: 16px 0;
+    }
+    #quantity h2{
+        text-align: center;
     }
     #quant-element{
         width: 80%;

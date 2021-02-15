@@ -1,13 +1,82 @@
-import '../Styles/Nav.css';
+import '../Styles/Contact.css';
 import React, { useState } from 'react';
+import emailjs from 'emailjs-com';
 
 
+const Contact = (props) => {
+    let [inputs, setInputs] = useState({ 
+                                            subject: '',
+                                            respondEmail: '',
+                                            message: ''
+                                    });
+    let [messageSent, setMessageSent] = useState(false);
 
-const Contact = () => {
+
+    let handleInput = (name, value) => {
+        setInputs(prev => ({
+            ...prev,
+            [name]: value
+        }))
+    }
+    
+    let checkInputs = () => {
+        let inp = document.getElementsByClassName('check');
+        let errorFound = false;
+        for(let i = 0; i < inp.length; i++){
+            if(inp[i].value.length){
+                inp[i].classList.add('success')
+            }else{
+                inp[i].classList.add('error');
+                errorFound = true;
+            }
+        }
+        return errorFound
+    }
+
+    const sendEmail = () => {
+        let err = checkInputs();
+        if(!err){
+            let message = `
+                <div>
+                    <p>Respond Email: ${inputs.respondEmail}</p>
+                    <p>Subject: ${inputs.subject}</p>
+                    <p>Message: ${inputs.message}</p>
+                </div>`
+            
+            var params = {
+                html: message,
+                to: "ezworkpc@gmail.com",
+        
+            };
+                     
+            
+            emailjs.send('default_service', 'template_wx84hwg', params)
+                .then(function(response) {
+                    setMessageSent(true)
+                }, function(error) {
+                    console.log('FAILED...', error);
+            });
+        }
+    }
 
     return(
         <div className='contact'>
-            Contact
+            <section>
+                <h1>Have a Question?</h1>
+                <h3>Shoot me a message!</h3>
+            </section>
+            <section>
+                <input className='check' type='text' name='respondEmail' value={inputs.firstName} placeholder='Enter Your Email...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
+                <input className='check' type='text' name='subject' value={inputs.firstName} placeholder='Subject...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
+                <textarea className='check' type='text' name='message' value={inputs.firstName} placeholder='Message...' onChange={(e) => handleInput(e.target.name, e.target.value)} rows='5'/>
+            </section>
+            <section>
+                {!messageSent ? (
+                    <button onClick={()=> sendEmail()}>Send Message</button>
+                ) : (
+                    <h3>Thanks! I got your message. You'll receive a response within 24 hours.</h3>
+                )}
+            </section>
         </div>
     )
 }
