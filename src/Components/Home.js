@@ -10,14 +10,18 @@ const Home = () => {
     let [sum, setSum] = useState('');
     let parts = {
         cpu: 'B079D3DBNM',
-        ram: 'B088T2KNZ4',
+        // ram: 'B088T2KNZ4',
+        ram: 'B08KGGPTYH',
         psu: 'B07DTP6SLJ',
-        storage250: 'B07YFF8879',
+        // storage250: 'B07YFF8879',
+        storage250: 'B08KZS8N8Y',
         // storage500: 'B07YFF3JCN',
+        // storage500: 'B08KZQYW2D',
         // storage1000: 'B07YFFX5MD',
+        // storage1000: 'B08KZPBGXV',
         // storage2000: 'B08K4NP5DQ',
         mobo: 'B079NYQQJJ',
-        case: 'B084JJP2W9',
+        case: 'B08GNFCB1M',
         wifi: 'B082NZYDDM'
     }
     let partsKeys = Object.keys(parts)
@@ -96,7 +100,7 @@ useEffect(() => {
                 <h3>Prices from Amazon.com</h3>
                 <div className='row'>
                     <div>
-                        <h4>Rosewill SRM-01B</h4>  
+                        <h4>Rosewill SCM-01B</h4>  
                         <p>Case</p>  
                     </div>
                     <div className='price'>{prices.case ? prices.case : <span className='loader'></span>}</div>
