@@ -12,7 +12,7 @@ const About = () => {
                 <h2>Hi, my name is Rico.</h2>
             </section>
             <section>
-                <p>After building it in 2017, I fell in love with figuring out ways to make my gaming pc more beefy. I watched videos, read articles, and searched for the best computer components that weren't insanely expensive. I'm always searching for the best prices for computer components so that I can upgrade my rig.</p>
+                <p>In2017, I built my first gaming computer and fell in love with figuring out ways to make it more beefy. I watched videos, read articles, and searched for the best computer components that weren't insanely expensive. I'm always searching for the best prices for computer components so that I can upgrade my rig.</p>
             </section>
             <section>
                 <p>Since my first build in 2017, I've built dozens of computers for family and friends for work or for gaming. I love using what I have learned to make buying a computer easier for those around me. Instead of wondering if you need 4 or 8 cores, I ask what you need the computer to do. Excel sheets? Easy. Video editing? I gotchu covered.</p>

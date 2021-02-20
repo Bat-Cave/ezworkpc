@@ -21,7 +21,8 @@ const Home = () => {
         // storage1000: 'B08KZPBGXV',
         // storage2000: 'B08K4NP5DQ',
         mobo: 'B079NYQQJJ',
-        case: 'B08GNFCB1M',
+        // case: 'B08GNFCB1M',
+        case: 'B07MDJ2RW8',
         wifi: 'B082NZYDDM'
     }
     let partsKeys = Object.keys(parts)
@@ -53,7 +54,6 @@ useEffect(() => {
             }))
         }).catch(function (error) {
             if (axios.isCancel(error)) {
-              console.log("cancelled");
             } else {
               throw error;
             }

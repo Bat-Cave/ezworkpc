@@ -24,7 +24,8 @@ const Order = (props) => {
         storage1000: 'B08KZPBGXV',
         storage2000: 'B08K4NP5DQ',
         mobo: 'B079NYQQJJ',
-        case: 'B08GNFCB1M',
+        // case: 'B08GNFCB1M',
+        case: 'B07MDJ2RW8',
         wifi: 'B082NZYDDM'
     }
     let [prices, setPrices] = useState({
@@ -64,6 +65,8 @@ const Order = (props) => {
     let partsKeys = Object.keys(parts)
 
     useEffect(() => {
+        const CancelToken = axios.CancelToken;
+        const source = CancelToken.source();
 
         for(let i = 0; i < partsKeys.length; i++){
             const options = {
@@ -73,7 +76,8 @@ const Order = (props) => {
             headers: {
                 'x-rapidapi-key': 'd110ceafe9msheddf4de95aef5e2p1276b3jsn80ea3cfb285a',
                 'x-rapidapi-host': 'amazon-price1.p.rapidapi.com'
-            }
+            },
+            cancelToken: source.token
             };
 
             axios.request(options).then(function (response) {
@@ -86,9 +90,15 @@ const Order = (props) => {
                     [`${partsKeys[i]}`]: `${currency}${priceNew}`
                 }))
             }).catch(function (error) {
-                console.error(error);
+                if (axios.isCancel(error)) {
+                } else {
+                  throw error;
+                }
             })
 
+        }
+        return function cleanup() {
+            source.cancel();
         }
 
     }, [])
@@ -188,9 +198,45 @@ const Order = (props) => {
             randNum = '';
             num = getRandomInt(0, 2);
         }
-        console.log(`${prefix}${code}`)
         return `${prefix}${code}`
     }
+
+    const sendToGoogleSheets = () => {
+        const scriptURL = 'https://sheet.best/api/sheets/09661212-42a3-4c3f-be87-0bb097ee7601';
+
+        let firstName = inputs.firstName;
+        let lastName = inputs.lastName;
+        let phone = inputs.phone;
+        let email = inputs.email;
+        let addressStreet = inputs.shippingAddressStreet;
+        let addressCity = inputs.shippingAddressCity;
+        let addressState = inputs.shippingAddressState;
+        let addressZIP = inputs.shippingAddressZIP;
+        let toForm = {
+            "Order Number": orderCode,
+            "Status": 'Order Recieved',
+            "First Name": firstName,
+            "Last Name": lastName,
+            "Phone": phone,
+            "Email": email,
+            "Address Street": addressStreet,
+            "Address City": addressCity,
+            "Address State": addressState,
+            "Address ZIP": addressZIP,
+            "Quantity": inputs.quantity,
+            "Storage Option": options.storage,
+            "WiFi Option": options.wifi,
+            "Price per Computer": sumTotal,
+            "Total Due": "$" + (+sumTotal.slice(1) * inputs.quantity).toFixed(2)
+        }
+
+        axios.post(scriptURL, toForm)
+        .then(response => {
+          console.log("SUCCESS!", response.status, "OK");
+        })
+
+    }
+
 
     const submitRequest = async (e) => {
         let err = checkInputs();
@@ -280,6 +326,8 @@ const Order = (props) => {
             }, function(error) {
                 console.log('FAILED...', error);
         });
+
+        sendToGoogleSheets()
     };
 
     const updateQuantity = (val) => {
@@ -436,7 +484,7 @@ const Order = (props) => {
                     <div>Cost per Computer: <span className='price'>*{sumTotal}</span>
                     </div>
                 </div>
-                <p className='disclaimer'>*Price pre-taxes. Does not include $100.00 labor fee or shipping fee.</p>
+                <p className='disclaimer'>*Price per computer pre-taxes. Does not include $100.00 labor fee, shipping fee, or taxes.</p>
             </section>
             <section>
                 <div className='option buttons'>
