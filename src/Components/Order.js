@@ -212,7 +212,11 @@ const Order = (props) => {
         let addressCity = inputs.shippingAddressCity;
         let addressState = inputs.shippingAddressState;
         let addressZIP = inputs.shippingAddressZIP;
+        let today = new Date();
+        let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
         let toForm = {
+            "Timestamp": (date + " " +time),
             "Order Number": orderCode,
             "Status": 'Order Recieved',
             "First Name": firstName,
