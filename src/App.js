@@ -2,18 +2,18 @@ import './Styles/App.css';
 import Nav from './Components/Nav';
 import Footer from './Components/Footer';
 import routes from './routes';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <HashRouter>
+      <BrowserRouter>
         <Nav />
       <div className='container'>
         {routes}
       </div>
       <Footer />
-      </HashRouter>
+      </BrowserRouter>
     </div>
   );
 }
