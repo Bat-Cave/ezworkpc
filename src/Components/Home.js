@@ -2,32 +2,90 @@ import '../Styles/Home.css';
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import compcase from '../case-transparent.png';
+import {Link, withRouter} from 'react-router-dom';
 
 
 
 const Home = () => {
+
+    //-----Admin Settings-----//
+
+    let parts = {
+        cpu: {
+            name: 'AMD Ryzen 3 2200G',
+            asin: 'B079D3DBNM'
+        },
+        // ram: {
+        //     name: 'OLOy DDR4 RAM 16GB',
+        //     asin: 'B088T2KNZ4'
+        // },
+        ram: {
+            name: 'Gigastone DDR4 16GB',
+            asin: 'B08KGGPTYH'
+        },
+        psu: {
+            name: 'EVGA 80+ BRONZE 450W',
+            asin: 'B07DTP6SLJ'
+        },
+        // storage250: {
+        //     name: 'WD Blue 250GB NVMe M.2 SSD',
+        //     asin: 'B07YFF8879'
+        // },
+        // storage500: {
+        //     name: 'WD Blue 500GB NVMe M.2 SSD',
+        //     asin: 'B07YFF3JCN'
+        // },
+        // storage1000: {
+        //     name: 'WD Blue 1000GB NVMe M.2 SSD',
+        //     asin: 'B07YFFX5MD'
+        // },
+        // storage2000: {
+        //     name: 'WD Blue 2000GB NVMe M.2 SSD',
+        //     asin: 'B08K4NP5DQ'
+        // },
+        storage250: {
+            name: 'Inland Professional 256GB NVMe M.2 SSD',
+            asin: 'B08KZS8N8Y'
+        },
+        // storage500: {
+        //     name: 'Inland Professional 512GB NVMe M.2 SSD',
+        //     asin: 'B08KZQYW2D'
+        // },
+        // storage1000: {
+        //     name: 'Inland Professional 1024GB NVMe M.2 SSD',
+        //     asin: 'B08KZPBGXV'
+        // },
+        mobo: {
+            name: 'GIGABYTE GA-A320M-S2H',
+            asin: 'B079NYQQJJ'
+        },
+        // case: {
+        //     name: 'Rosewill SCM-01B',
+        //     asin: 'B08GNFCB1M'
+        // },
+        case: {
+            name: 'Rosewill FBM-X2',
+            asin: 'B07MDJ2RW8'
+        },
+        wifi: {
+            name: 'Cudy WE3000 AX',
+            asin: 'B082NZYDDM'
+        }
+    }
+
+    //----^Admin Settings^----//
+
     let [prices, setPrices] = useState({});
     let [sum, setSum] = useState('');
-    let parts = {
-        cpu: 'B079D3DBNM',
-        // ram: 'B088T2KNZ4',
-        ram: 'B08KGGPTYH',
-        psu: 'B07DTP6SLJ',
-        // storage250: 'B07YFF8879',
-        storage250: 'B08KZS8N8Y',
-        // storage500: 'B07YFF3JCN',
-        // storage500: 'B08KZQYW2D',
-        // storage1000: 'B07YFFX5MD',
-        // storage1000: 'B08KZPBGXV',
-        // storage2000: 'B08K4NP5DQ',
-        mobo: 'B079NYQQJJ',
-        // case: 'B08GNFCB1M',
-        case: 'B07MDJ2RW8',
-        wifi: 'B082NZYDDM'
-    }
+    
     let partsKeys = Object.keys(parts)
 
 useEffect(() => {
+    window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
     const CancelToken = axios.CancelToken;
     const source = CancelToken.source();
 
@@ -35,7 +93,7 @@ useEffect(() => {
         const options = {
         method: 'GET',
         url: 'https://amazon-price1.p.rapidapi.com/priceReport',
-        params: {asin: parts[partsKeys[i]], marketplace: 'US'},
+        params: {asin: parts[partsKeys[i]].asin, marketplace: 'US'},
         headers: {
             'x-rapidapi-key': 'd110ceafe9msheddf4de95aef5e2p1276b3jsn80ea3cfb285a',
             'x-rapidapi-host': 'amazon-price1.p.rapidapi.com'
@@ -91,59 +149,60 @@ useEffect(() => {
                             <li>HDMI, DVI, and Display Port</li>
                             <li>1 Gbe Ethernet</li>
                             <li>16 GB DDR4 3000MHz Memory</li>
-                            <li>6.0 Gb/s Storage</li>
-                            <li>Wi-Fi 6 & Bluetooth 5.0</li>
+                            <li>2,600 MB/s Read</li>
+                            <li>1,800 MB/s Write</li>
+                            <li>WiFi 6 & Bluetooth 5.0</li>
                         </ul>
                     </div>
                     <img src={compcase}/>
                 </div>
-                <h3>Prices from Amazon.com</h3>
+                <h3>Estimated Component Prices</h3>
                 <div className='row'>
                     <div>
-                        <h4>Rosewill SCM-01B</h4>  
+                        <h4>{parts.case.name}</h4>  
                         <p>Case</p>  
                     </div>
                     <div className='price'>{prices.case ? prices.case : <span className='loader'></span>}</div>
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>Gigabyte GA-A320M-S2H</h4>  
+                        <h4>{parts.mobo.name}</h4>  
                         <p>Motherboard</p>  
                     </div>
                     <div className='price'>{prices.mobo ? prices.mobo : <span className='loader'></span>}</div>
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>AMD Ryzen 3 2200G</h4>  
+                        <h4>{parts.cpu.name}</h4>  
                         <p>CPU/GPU</p>  
                     </div>
                     <div className='price'>{prices.cpu ? prices.cpu : <span className='loader'></span>}</div>
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>16GB OLOy DDR4 RAM</h4>  
+                        <h4>{parts.ram.name}</h4>  
                         <p>RAM</p>  
                     </div>
                     <div className='price'>{prices.ram ? prices.ram : <span className='loader'></span>}</div>
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>Western Digital M.2 SSD</h4>  
+                        <h4>{parts.storage250.name}</h4>  
                         <p>Storage (upgradable)</p>  
                     </div>
                     <div className='price'>{prices.storage250 ? prices.storage250 : <span className='loader'></span>}</div>
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>EVGA 450 Watt 80+ Bronze</h4>  
-                        <p>PSU</p>  
+                        <h4>{parts.psu.name}</h4>  
+                        <p>Power Supply</p>  
                     </div>
                     <div className='price'>{prices.psu ? prices.psu : <span className='loader'></span>}</div>
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>Cudy Wi-Fi 6 & Bluetooth 5.0</h4>  
-                        <p>Wi-Fi Card (optional)</p>  
+                        <h4>{parts.wifi.name}</h4>  
+                        <p>Wi-Fi & Bluetooth Card (optional)</p>  
                     </div>
                     <div className='price'>{prices.wifi ? prices.wifi : <span className='loader'></span>}</div>
                 </div>
@@ -156,8 +215,11 @@ useEffect(() => {
                 </div>
                 <p className='disclaimer'>*Not the final price. This is only an estimation based on the prices for the products found on Amazon.com.</p>
             </section>
+            <section>
+                <Link to='/order'>Order Now</Link>
+            </section>
         </div>
     )
 }
 
-export default Home;
+export default withRouter(Home);

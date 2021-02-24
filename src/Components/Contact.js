@@ -1,5 +1,5 @@
 import '../Styles/Contact.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import emailjs from 'emailjs-com';
 
 
@@ -12,6 +12,14 @@ const Contact = (props) => {
     let [messageSent, setMessageSent] = useState(false);
 
 
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+          });
+    }, [])
     let handleInput = (name, value) => {
         setInputs(prev => ({
             ...prev,

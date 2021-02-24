@@ -1,9 +1,18 @@
 import '../Styles/Thanks.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 
 const Thanks = () => {
+    
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+          });
+    }, [])
 
     return(
         <div className='thanks'>

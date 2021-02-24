@@ -11,23 +11,76 @@ init("user_V9dVOdqrRCfPsTshTaIcD");
 
 
 const Order = (props) => {
+    
+    //-----Admin Settings-----//
+    
+    let quantityLimit = 5;
+    
     let parts = {
-        cpu: 'B079D3DBNM',
-        // ram: 'B088T2KNZ4',
-        ram: 'B08KGGPTYH',
-        psu: 'B07DTP6SLJ',
-        // storage250: 'B07YFF8879',
-        storage250: 'B08KZS8N8Y',
-        // storage500: 'B07YFF3JCN',
-        storage500: 'B08KZQYW2D',
-        // storage1000: 'B07YFFX5MD',
-        storage1000: 'B08KZPBGXV',
-        storage2000: 'B08K4NP5DQ',
-        mobo: 'B079NYQQJJ',
-        // case: 'B08GNFCB1M',
-        case: 'B07MDJ2RW8',
-        wifi: 'B082NZYDDM'
+        cpu: {
+            name: 'AMD Ryzen 3 2200G',
+            asin: 'B079D3DBNM'
+        },
+        // ram: {
+        //     name: 'OLOy DDR4 RAM 16GB',
+        //     asin: 'B088T2KNZ4'
+        // },
+        ram: {
+            name: 'Gigastone DDR4 16GB',
+            asin: 'B08KGGPTYH'
+        },
+        psu: {
+            name: 'EVGA 80+ BRONZE 450W',
+            asin: 'B07DTP6SLJ'
+        },
+        // storage250: {
+        //     name: 'WD Blue 250GB NVMe M.2 SSD',
+        //     asin: 'B07YFF8879'
+        // },
+        // storage500: {
+        //     name: 'WD Blue 500GB NVMe M.2 SSD',
+        //     asin: 'B07YFF3JCN'
+        // },
+        // storage1000: {
+        //     name: 'WD Blue 1000GB NVMe M.2 SSD',
+        //     asin: 'B07YFFX5MD'
+        // },
+        storage2000: {
+            name: 'WD Blue 2000GB NVMe M.2 SSD',
+            asin: 'B08K4NP5DQ'
+        },
+        storage250: {
+            name: 'Inland Professional 256GB NVMe M.2 SSD',
+            asin: 'B08KZS8N8Y'
+        },
+        storage500: {
+            name: 'Inland Professional 512GB NVMe M.2 SSD',
+            asin: 'B08KZQYW2D'
+        },
+        storage1000: {
+            name: 'Inland Professional 1024GB NVMe M.2 SSD',
+            asin: 'B08KZPBGXV'
+        },
+        mobo: {
+            name: 'GIGABYTE GA-A320M-S2H',
+            asin: 'B079NYQQJJ'
+        },
+        // case: {
+        //     name: 'Rosewill SCM-01B',
+        //     asin: 'B08GNFCB1M'
+        // },
+        case: {
+            name: 'Rosewill FBM-X2',
+            asin: 'B07MDJ2RW8'
+        },
+        wifi: {
+            name: 'Cudy WE3000 AX',
+            asin: 'B082NZYDDM'
+        }
     }
+    
+    //----^Admin Settings^----//
+
     let [prices, setPrices] = useState({
                                         none: '0'
                                     });
@@ -65,6 +118,11 @@ const Order = (props) => {
     let partsKeys = Object.keys(parts)
 
     useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+          });
         const CancelToken = axios.CancelToken;
         const source = CancelToken.source();
 
@@ -72,7 +130,7 @@ const Order = (props) => {
             const options = {
             method: 'GET',
             url: 'https://amazon-price1.p.rapidapi.com/priceReport',
-            params: {asin: parts[partsKeys[i]], marketplace: 'US'},
+            params: {asin: parts[partsKeys[i]].asin, marketplace: 'US'},
             headers: {
                 'x-rapidapi-key': 'd110ceafe9msheddf4de95aef5e2p1276b3jsn80ea3cfb285a',
                 'x-rapidapi-host': 'amazon-price1.p.rapidapi.com'
@@ -81,7 +139,7 @@ const Order = (props) => {
             };
 
             axios.request(options).then(function (response) {
-                let data = response.data 
+                let data = response.data;
                 let priceNew = data.lastPrice.priceNew + "";
                 priceNew = priceNew.slice(0, priceNew.length - 2) + "." + priceNew.slice(-2);
                 let currency = data.currencySymbol;
@@ -233,12 +291,13 @@ const Order = (props) => {
             "Price per Computer": sumTotal,
             "Total Due": "$" + (+sumTotal.slice(1) * inputs.quantity).toFixed(2)
         }
-
+        console.log(toForm)
         axios.post(scriptURL, toForm)
         .then(response => {
           console.log("SUCCESS!", response.status, "OK");
+        }).catch(error => {
+            console.log(error)
         })
-
     }
 
 
@@ -336,7 +395,7 @@ const Order = (props) => {
 
     const updateQuantity = (val) => {
         if(val === '+'){
-            if(inputs.quantity < 10){
+            if(inputs.quantity < quantityLimit){
                 setInputs(prev => ({
                     ...prev,
                     quantity: inputs.quantity + 1
@@ -371,7 +430,7 @@ const Order = (props) => {
                     <h2>{inputs.quantity > 1 ? 'computers.' : 'computer.'}</h2>
                 </div>
                 <div className='p'>
-                    <p>Limit 10 per order.</p>
+                    <p>Limit {quantityLimit} per order.</p>
                 </div>
             </section>
             <section>
@@ -379,35 +438,35 @@ const Order = (props) => {
                 
                 <div className='row'>
                     <div>
-                        <h4>Rosewill SCM-01B</h4>  
+                        <h4>{parts.case.name}</h4>  
                         <p>Case</p>  
                     </div>
                     <div className='price'>{prices.case ? prices.case : <span className='loader'></span>}</div>
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>Gigabyte GA-A320M-S2H</h4>  
+                        <h4>{parts.mobo.name}</h4>  
                         <p>Motherboard</p>  
                     </div>
                     <div className='price'>{prices.mobo ? prices.mobo : <span className='loader'></span>}</div>
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>AMD Ryzen 3 2200G</h4>  
+                        <h4>{parts.cpu.name}</h4>  
                         <p>CPU/GPU</p>  
                     </div>
                     <div className='price'>{prices.cpu ? prices.cpu : <span className='loader'></span>}</div>
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>16GB OLOy DDR4 RAM</h4>  
+                        <h4>{parts.ram.name}</h4>  
                         <p>RAM</p>  
                     </div>
                     <div className='price'>{prices.ram ? prices.ram : <span className='loader'></span>}</div>
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>EVGA 450 Watt 80+ Bronze</h4>  
+                        <h4>{parts.psu.name}</h4>  
                         <p>PSU</p>  
                     </div>
                     <div className='price'>{prices.psu ? prices.psu : <span className='loader'></span>}</div>
@@ -425,7 +484,7 @@ const Order = (props) => {
                         }))
                         updateOptions(e.target.name, e.target.value)
                     }}/>
-                    <div>250 GB M.2 SSD {prices.storage250 ? <span className='price'>{prices.storage250}</span> : <span className='loader'></span>}</div>
+                    <div>{parts.storage250.name} {prices.storage250 ? <span className='price'>{prices.storage250}</span> : <span className='loader'></span>}</div>
                 </div>
                 <div className='option'>
                     <input type='radio' name='storage' value='storage500' onChange={(e) => {
@@ -435,7 +494,7 @@ const Order = (props) => {
                         }))
                         updateOptions(e.target.name, e.target.value)
                     }}/>
-                    <div>500 GB M.2 SSD {prices.storage500 ? <span className='price'>{prices.storage500}</span> : <span className='loader'></span>}</div>
+                    <div>{parts.storage500.name} {prices.storage500 ? <span className='price'>{prices.storage500}</span> : <span className='loader'></span>}</div>
                 </div>
                 <div className='option'>
                     <input type='radio' name='storage' value='storage1000' onChange={(e) => {
@@ -445,7 +504,7 @@ const Order = (props) => {
                         }))
                         updateOptions(e.target.name, e.target.value)
                     }}/>
-                    <div>1000 GB M.2 SSD {prices.storage1000 ? <span className='price'>{prices.storage1000}</span> : <span className='loader'></span>}</div>
+                    <div>{parts.storage1000.name} {prices.storage1000 ? <span className='price'>{prices.storage1000}</span> : <span className='loader'></span>}</div>
                 </div>
                 <div className='option'>
                     <input type='radio' name='storage' value='storage2000' onChange={(e) => {
@@ -455,7 +514,7 @@ const Order = (props) => {
                         }))
                         updateOptions(e.target.name, e.target.value)
                     }}/>
-                    <div>2000 GB M.2 SSD {prices.storage2000 ? <span className='price'>{prices.storage2000}</span> : <span className='loader'></span>}</div>
+                    <div>{parts.storage2000.name} {prices.storage2000 ? <span className='price'>{prices.storage2000}</span> : <span className='loader'></span>}</div>
                 </div>
             </section>
             <section>
@@ -488,7 +547,7 @@ const Order = (props) => {
                     <div>Cost per Computer: <span className='price'>*{sumTotal}</span>
                     </div>
                 </div>
-                <p className='disclaimer'>*Price per computer pre-taxes. Does not include $100.00 labor fee, shipping fee, or taxes.</p>
+                <p className='disclaimer'>*Price per computer pre-taxes. Does not include labor fee, shipping fee, or taxes.</p>
             </section>
             <section>
                 <div className='option buttons'>

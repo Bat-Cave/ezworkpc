@@ -38,6 +38,12 @@
 
 .order section h3{
     width: 100%;
+    text-align: left;
+}
+
+.order section:nth-of-type(2) h3{
+    width: 100%;
+    text-align: center;
 }
 
 .order .option {
@@ -376,6 +382,7 @@
     color: red;
     font-weight: 700;
     width: 20%;
+    margin: 0 6px 0 0;
 }
 
 
@@ -449,6 +456,13 @@
     .order #tacos div{
         width: 150px;
         font-size: 11px;
+    }
+    .order .submitted section{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin: 32px 0;
+        transition: all .25s ease;
     }
     .order .submitted .buttons div p{
         flex-direction: column;

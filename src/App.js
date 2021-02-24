@@ -1,6 +1,6 @@
 import './Styles/App.css';
-import Home from './Components/Home';
 import Nav from './Components/Nav';
+import Footer from './Components/Footer';
 import routes from './routes';
 import { HashRouter } from 'react-router-dom';
 
@@ -12,6 +12,7 @@ function App() {
       <div className='container'>
         {routes}
       </div>
+      <Footer />
       </HashRouter>
     </div>
   );
