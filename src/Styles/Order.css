@@ -49,17 +49,19 @@
     margin: 4px 4px 4px 12px;
     display: flex;
     align-items: center;
+    font-size: 14px;
 }
 
 .order .bottomBorder{
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #fdd616;
+    padding: 2px 0;
 }
 
 .order .total {
     margin: 4px 4px 4px 4px;
     display: flex;
     align-items: center;
-    border-top: 2px solid black;
+    border-top: 2px solid #fdd616;
 }
 .order .disclaimer{
     font-size: 10px;
@@ -187,7 +189,7 @@
     font-size: 16px;
     font-weight: 800;
     font-style: normal;
-    margin-left: 16px;
+    margin-left: 8px;
 }
 
 .order .loader{
@@ -373,7 +375,7 @@
     justify-content: space-between;
     margin: 4px 0;
     padding: 12px 4px;
-    background: #fdd616;;
+    background: #fdd616;
     position: relative;
     border: 2px solid black;
     border-radius: 5px;
@@ -433,6 +435,7 @@
 @media only screen and (max-width: 900px) {
     .order section{
         width: 100%;
+        padding: 16px 0;
     }
     #quantity{
         flex-direction: column;
@@ -474,5 +477,8 @@
     }
     #quantity h2:first-of-type{
         text-align: center;
+    }
+    .order .option{
+        font-size: 12px;
     }
   }

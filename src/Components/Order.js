@@ -609,7 +609,7 @@ const Order = (props) => {
                 <div className='option total'>
                 </div>
                 <div className='option'>
-                    <div>Computer Prices: <span className='price'>{`${sumTotal} x ${inputs.quantity} = $${partsTotal}`}</span>
+                    <div>Computer Prices ({`${sumTotal} x ${inputs.quantity}`}): <span className='price'>{`$${partsTotal}`}</span>
                     </div>
                 </div>
                 <div className='option'>
