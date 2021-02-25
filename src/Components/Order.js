@@ -15,6 +15,16 @@ const Order = (props) => {
     //-----Admin Settings-----//
     
     let quantityLimit = 5;
+    let laborRate = 100;
+    let taxRate = 0.0727;
+    let shippingRate = 12.80;
+
+    let [partsTotal, setPartsTotal] = useState(0);
+    let [taxTotal, setTaxTotal] = useState(0);
+    let [laborTotal, setLaborTotal] = useState(0);
+    let [shippingTotal, setShippingTotal] = useState(0);
+    let [grandTotal, setGrandTotal] = useState(0);
+
     
     let parts = {
         cpu: {
@@ -180,10 +190,17 @@ const Order = (props) => {
         total += +sum.slice(1);
         total += +optionsPrices.storage.slice(1);
         total += +optionsPrices.wifi.slice(1);
-
         setSumTotal(`$${total.toFixed(2)}`)
+
     }, [optionsPrices])
 
+    useEffect(() => {
+        setPartsTotal((+sumTotal.slice(1)*inputs.quantity).toFixed(2));
+        setTaxTotal((partsTotal*taxRate).toFixed(2));
+        setLaborTotal((laborRate*inputs.quantity).toFixed(2));
+        setShippingTotal((shippingRate*inputs.quantity).toFixed(2));
+        setGrandTotal((+partsTotal + +taxTotal + +laborTotal + +shippingTotal).toFixed(2));
+    })
 
     const makeTaco = (type, text) => {
         let tacos = document.getElementById('tacos');
@@ -289,9 +306,11 @@ const Order = (props) => {
             "Storage Option": options.storage,
             "WiFi Option": options.wifi,
             "Price per Computer": sumTotal,
-            "Total Due": "$" + (+sumTotal.slice(1) * inputs.quantity).toFixed(2)
+            "Tax": taxTotal,
+            "Labor": laborTotal,
+            "Shipping": shippingTotal,
+            "Total Due": "$" + (grandTotal)
         }
-        console.log(toForm)
         axios.post(scriptURL, toForm)
         .then(response => {
           console.log("SUCCESS!", response.status, "OK");
@@ -324,14 +343,58 @@ const Order = (props) => {
         let addressZIP = inputs.shippingAddressZIP;
         let subject = 'I got your order!'
         let html = 
-        `<div>
+        `
+        <div>
         <h2>Order: ${orderCode}</h2>
         <h3>Hi ${firstName} ${lastName},</h3>
+
+        <p>Order Details:</p>
+        <table style='width: 500px; border: 1px solid black;' cellpadding='0' cellspacing='0'>
+            <tbody>
+                <tr>
+                    <th style='text-align: left; width: 50%; border-bottom: 2px solid #000;'>Item</th>
+                    <th style='text-align: left; width: 15%; border-bottom: 2px solid #000;'>Rate</th>
+                    <th style='text-align: left; width: 10%; border-bottom: 2px solid #000;'>Qty</th>
+                    <th style='text-align: left; width: 25%; border-bottom: 2px solid #000;'>Total</th>
+                </tr>
+                <tr>
+                    <td>Computer Prices</td>
+                    <td>${sumTotal}</td>
+                    <td>${inputs.quantity}</td>
+                    <td>$${partsTotal}</td>
+                </tr>
+                <tr>
+                    <td style='background: #c89bf5;'>Tax</td>
+                    <td style='background: #c89bf5;'></td>
+                    <td style='background: #c89bf5;'></td>
+                    <td style='background: #c89bf5;'>$${taxTotal}</td>
+                </tr>
+                <tr>
+                    <td>Labor</td>
+                    <td></td>
+                    <td></td>
+                    <td>$${laborTotal}</td>
+                </tr>
+                <tr>
+                    <td style='background: #c89bf5;'>Shipping</td>
+                    <td style='background: #c89bf5;'></td>
+                    <td style='background: #c89bf5;'></td>
+                    <td style='background: #c89bf5;'>$${shippingTotal}</td>
+                </tr>
+                <tr>
+                    <td style='border-top: 2px solid #000;'>Approximate Total Due:</td>
+                    <td style='border-top: 2px solid #000;'></td>
+                    <td style='border-top: 2px solid #000;'></td>
+                    <td style='border-top: 2px solid #000;'><strong>$${grandTotal}</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
         <p>Thank you for your order! Here is what will happen next:</p>
         <ol>
             <li>I will order the parts to build the computer(s).</li>
             <li>When the parts arrive, I will build the computer(s).</li>
-            <li>I will send you an invoice.</li>
+            <li>I will send you an invoice with the final amount due.</li>
             <li>Once payment is received, I will send the computer(s) to you.</li>
         </ol>
 
@@ -475,7 +538,7 @@ const Order = (props) => {
             <section>
                 <span id='storageOption'></span>
                 <h3>Storage options</h3>
-                <p>Select how much storage you need each computer to have.</p>
+                <p className='bottomBorder'>Select how much storage you need each computer to have.</p>
                 <div className='option'>
                     <input type='radio' name='storage' value='storage250' onChange={(e) => {
                         setOptionsPrices(prev=>({
@@ -520,7 +583,7 @@ const Order = (props) => {
             <section>
                 <span id='wifiOption'></span>
                 <h3>Wi-Fi options</h3>
-                <p>Do you want each computer to have a Wi-Fi card?</p>
+                <p className='bottomBorder'>Do you want each computer to have a Wi-Fi card?</p>
                 <div className='option'>
                     <input type='radio' name='wifi' value='none' onChange={(e) => {
                         setOptionsPrices(prev=>({
@@ -544,10 +607,27 @@ const Order = (props) => {
             </section>
             <section>
                 <div className='option total'>
-                    <div>Cost per Computer: <span className='price'>*{sumTotal}</span>
+                </div>
+                <div className='option'>
+                    <div>Computer Prices: <span className='price'>{`${sumTotal} x ${inputs.quantity} = $${partsTotal}`}</span>
                     </div>
                 </div>
-                <p className='disclaimer'>*Price per computer pre-taxes. Does not include labor fee, shipping fee, or taxes.</p>
+                <div className='option'>
+                    <div>Tax: <span className='price'>{`$${taxTotal}`}</span>
+                    </div>
+                </div>
+                <div className='option'>
+                    <div>Labor: <span className='price'>{`$${laborTotal}`}</span></div>
+                </div>
+                <div className='option'>
+                    <div>Shipping: <span className='price'>{`$${shippingTotal}`}</span>
+                    </div>
+                </div>
+                <div className='option total'>
+                    <div>Total: <span className='price'>{`*$${grandTotal}`}</span>
+                    </div>
+                </div>
+                <p className='disclaimer'>*Approximate price. Price may change due to computer part prices and availablity. A final invoice will be sent to you once the parts are ordered and the computers are built.</p>
             </section>
             <section>
                 <div className='option buttons'>
