@@ -13,7 +13,7 @@ const Home = () => {
     let parts = {
         cpu: {
             name: 'AMD Ryzen 3 2200G',
-            asin: 'B079D3DBNM'
+            price: 181.98
         },
         // ram: {
         //     name: 'OLOy DDR4 RAM 16GB',
@@ -21,11 +21,11 @@ const Home = () => {
         // },
         ram: {
             name: 'Gigastone DDR4 16GB',
-            asin: 'B08KGGPTYH'
+            price: 68.99
         },
         psu: {
             name: 'EVGA 80+ BRONZE 450W',
-            asin: 'B07DTP6SLJ'
+            price: 44.43
         },
         // storage250: {
         //     name: 'WD Blue 250GB NVMe M.2 SSD',
@@ -45,7 +45,7 @@ const Home = () => {
         // },
         storage250: {
             name: 'Inland Professional 256GB NVMe M.2 SSD',
-            asin: 'B08KZS8N8Y'
+            price: 37.99
         },
         // storage500: {
         //     name: 'Inland Professional 512GB NVMe M.2 SSD',
@@ -57,7 +57,7 @@ const Home = () => {
         // },
         mobo: {
             name: 'GIGABYTE GA-A320M-S2H',
-            asin: 'B079NYQQJJ'
+            price: 90.54
         },
         // case: {
         //     name: 'Rosewill SCM-01B',
@@ -65,11 +65,11 @@ const Home = () => {
         // },
         case: {
             name: 'Rosewill FBM-X2',
-            asin: 'B07MDJ2RW8'
+            price: 54.87
         },
         wifi: {
             name: 'Cudy WE3000 AX',
-            asin: 'B082NZYDDM'
+            price: 27.90
         }
     }
 
@@ -86,40 +86,16 @@ useEffect(() => {
         left: 0,
         behavior: 'smooth'
       });
-    const CancelToken = axios.CancelToken;
-    const source = CancelToken.source();
 
     for(let i = 0; i < partsKeys.length; i++){
-        const options = {
-        method: 'GET',
-        url: 'https://amazon-price1.p.rapidapi.com/priceReport',
-        params: {asin: parts[partsKeys[i]].asin, marketplace: 'US'},
-        headers: {
-            'x-rapidapi-key': 'd110ceafe9msheddf4de95aef5e2p1276b3jsn80ea3cfb285a',
-            'x-rapidapi-host': 'amazon-price1.p.rapidapi.com'
-            },
-        cancelToken: source.token
-        };
 
-        axios.request(options).then(function (response) {
-            let data = response.data 
-            let priceNew = data.lastPrice.priceNew + "";
-            priceNew = priceNew.slice(0, priceNew.length - 2) + "." + priceNew.slice(-2);
-            let currency = data.currencySymbol;
-            setPrices(prev=>({
-                ...prev,
-                [`${partsKeys[i]}`]: `${currency}${priceNew}`
-            }))
-        }).catch(function (error) {
-            if (axios.isCancel(error)) {
-            } else {
-              throw error;
-            }
-        })
+        let priceNew = parts[partsKeys[i]].price;
+        let currency = "$";
+        setPrices(prev=>({
+            ...prev,
+            [`${partsKeys[i]}`]: `${currency}${priceNew}`
+        }))
 
-    }
-    return function cleanup() {
-        source.cancel();
     }
 }, [])
 
