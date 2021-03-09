@@ -13,7 +13,7 @@ const Home = () => {
     let parts = {
         cpu: {
             name: 'AMD Ryzen 3 2200G',
-            price: 181.98
+            price: '181.98'
         },
         // ram: {
         //     name: 'OLOy DDR4 RAM 16GB',
@@ -21,11 +21,11 @@ const Home = () => {
         // },
         ram: {
             name: 'Gigastone DDR4 16GB',
-            price: 68.99
+            price: '68.99'
         },
         psu: {
             name: 'EVGA 80+ BRONZE 450W',
-            price: 44.43
+            price: '44.43'
         },
         // storage250: {
         //     name: 'WD Blue 250GB NVMe M.2 SSD',
@@ -45,7 +45,7 @@ const Home = () => {
         // },
         storage250: {
             name: 'Inland Professional 256GB NVMe M.2 SSD',
-            price: 37.99
+            price: '37.99'
         },
         // storage500: {
         //     name: 'Inland Professional 512GB NVMe M.2 SSD',
@@ -57,7 +57,7 @@ const Home = () => {
         // },
         mobo: {
             name: 'GIGABYTE GA-A320M-S2H',
-            price: 90.54
+            price: '90.54'
         },
         // case: {
         //     name: 'Rosewill SCM-01B',
@@ -65,11 +65,11 @@ const Home = () => {
         // },
         case: {
             name: 'Rosewill FBM-X2',
-            price: 54.87
+            price: '54.87'
         },
         wifi: {
             name: 'Cudy WE3000 AX',
-            price: 27.90
+            price: '27.90'
         }
     }
 
@@ -142,7 +142,7 @@ useEffect(() => {
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>{parts.mobo.name}</h4>  
+                        <h4>AM4 MATX Motherboard</h4>  
                         <p>Motherboard</p>  
                     </div>
                     <div className='price'>{prices.mobo ? prices.mobo : <span className='loader'></span>}</div>
@@ -156,21 +156,21 @@ useEffect(() => {
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>{parts.ram.name}</h4>  
+                        <h4>16GB of DDR4 @ 300MHz </h4>  
                         <p>RAM</p>  
                     </div>
                     <div className='price'>{prices.ram ? prices.ram : <span className='loader'></span>}</div>
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>{parts.storage250.name}</h4>  
+                        <h4>250GB NVMe M.2 SSD</h4>  
                         <p>Storage (upgradable)</p>  
                     </div>
                     <div className='price'>{prices.storage250 ? prices.storage250 : <span className='loader'></span>}</div>
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>{parts.psu.name}</h4>  
+                        <h4>80+ Bronze Power Supply</h4>  
                         <p>Power Supply</p>  
                     </div>
                     <div className='price'>{prices.psu ? prices.psu : <span className='loader'></span>}</div>

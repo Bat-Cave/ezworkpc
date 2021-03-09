@@ -29,7 +29,7 @@ const Order = (props) => {
     let parts = {
         cpu: {
             name: 'AMD Ryzen 3 2200G',
-            price: 181.98
+            price: '181.98'
         },
         // ram: {
         //     name: 'OLOy DDR4 RAM 16GB',
@@ -37,11 +37,11 @@ const Order = (props) => {
         // },
         ram: {
             name: 'Gigastone DDR4 16GB',
-            price: 68.99
+            price: '68.99'
         },
         psu: {
             name: 'EVGA 80+ BRONZE 450W',
-            price: 44.43
+            price: '44.43'
         },
         // storage250: {
         //     name: 'WD Blue 250GB NVMe M.2 SSD',
@@ -57,23 +57,23 @@ const Order = (props) => {
         // },
         storage2000: {
             name: 'WD Blue 2000GB NVMe M.2 SSD',
-            price: 247.99
+            price: '247.99'
         },
         storage250: {
             name: 'Inland Professional 256GB NVMe M.2 SSD',
-            price: 37.99
+            price: '37.99'
         },
         storage500: {
             name: 'Inland Professional 512GB NVMe M.2 SSD',
-            price: 57.99
+            price: '57.99'
         },
         storage1000: {
             name: 'Inland Professional 1024GB NVMe M.2 SSD',
-            price: 99.99
+            price: '99.99'
         },
         mobo: {
             name: 'GIGABYTE GA-A320M-S2H',
-            price: 90.54
+            price: '90.54'
         },
         // case: {
         //     name: 'Rosewill SCM-01B',
@@ -81,11 +81,11 @@ const Order = (props) => {
         // },
         case: {
             name: 'Rosewill FBM-X2',
-            price: 54.87
+            price: '54.87'
         },
         wifi: {
             name: 'Cudy WE3000 AX',
-            price: 27.90
+            price: '27.90'
         }
     }
     

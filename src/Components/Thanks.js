@@ -28,6 +28,8 @@ const Thanks = () => {
                     <li><span>Once I finish building the computers, I'll request payment.</span></li>
                     <li><span>Once payment is received, I will send the computers to you.</span></li>
                 </ol>
+                <br></br>
+                <p>You'll receive email updates throughout the process to let you know the status of your order.</p>
             </section>
         </div>
     )
