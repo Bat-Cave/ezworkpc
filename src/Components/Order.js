@@ -24,17 +24,16 @@ const Order = (props) => {
     let [laborTotal, setLaborTotal] = useState(0);
     let [shippingTotal, setShippingTotal] = useState(0);
     let [grandTotal, setGrandTotal] = useState(0);
+    
+    
+    let data = require('../data.json');
 
     
-    let parts = {
+    let [parts, setParts] = useState({
         cpu: {
             name: 'AMD Ryzen 3 2200G',
             price: '181.98'
         },
-        // ram: {
-        //     name: 'OLOy DDR4 RAM 16GB',
-        //     asin: 'B088T2KNZ4'
-        // },
         ram: {
             name: 'Gigastone DDR4 16GB',
             price: '68.99'
@@ -42,22 +41,6 @@ const Order = (props) => {
         psu: {
             name: 'EVGA 80+ BRONZE 450W',
             price: '44.43'
-        },
-        // storage250: {
-        //     name: 'WD Blue 250GB NVMe M.2 SSD',
-        //     asin: 'B07YFF8879'
-        // },
-        // storage500: {
-        //     name: 'WD Blue 500GB NVMe M.2 SSD',
-        //     asin: 'B07YFF3JCN'
-        // },
-        // storage1000: {
-        //     name: 'WD Blue 1000GB NVMe M.2 SSD',
-        //     asin: 'B07YFFX5MD'
-        // },
-        storage2000: {
-            name: 'WD Blue 2000GB NVMe M.2 SSD',
-            price: '247.99'
         },
         storage250: {
             name: 'Inland Professional 256GB NVMe M.2 SSD',
@@ -71,14 +54,14 @@ const Order = (props) => {
             name: 'Inland Professional 1024GB NVMe M.2 SSD',
             price: '99.99'
         },
+        storage2000: {
+            name: 'WD Blue 2000GB NVMe M.2 SSD',
+            price: '247.99'
+        },
         mobo: {
             name: 'GIGABYTE GA-A320M-S2H',
             price: '90.54'
         },
-        // case: {
-        //     name: 'Rosewill SCM-01B',
-        //     asin: 'B08GNFCB1M'
-        // },
         case: {
             name: 'Rosewill FBM-X2',
             price: '54.87'
@@ -87,7 +70,7 @@ const Order = (props) => {
             name: 'Cudy WE3000 AX',
             price: '27.90'
         }
-    }
+    });
     
     //----^Admin Settings^----//
 
@@ -134,6 +117,22 @@ const Order = (props) => {
             behavior: 'smooth'
           });
 
+        data.forEach((e, i) => {
+            let comp = e.component;
+            let name = e.name;
+            let pri = e.price.slice(1);
+            let use = e.use;
+
+            let nameArr = name.split(" ");
+
+            name = `${nameArr[0]} ${nameArr[1]} ${nameArr[2]} ${nameArr[3]}`
+
+            if(use){
+                parts[comp].name = name;
+                parts[comp].price = pri;
+            }
+        })
+
         for(let i = 0; i < partsKeys.length; i++){
             
             let priceNew = parts[partsKeys[i]].price;
@@ -144,11 +143,10 @@ const Order = (props) => {
             }))
 
         }
-            
-
     }, [])
 
     useEffect(() => {
+
         let sum = 0;
         for(let p = 0; p < Object.keys(toSum).length; p++){
             if(prices[toSum[Object.keys(toSum)[p]]]){
@@ -160,6 +158,7 @@ const Order = (props) => {
 
         setSum(`$${sum.toFixed(2)}`)
         setSumTotal(`$${sum.toFixed(2)}`)
+        
     }, [prices, toSum])
 
     useEffect(() => {

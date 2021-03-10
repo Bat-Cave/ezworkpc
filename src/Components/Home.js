@@ -8,17 +8,16 @@ import {Link, withRouter} from 'react-router-dom';
 
 const Home = () => {
 
+
+    let data = require('../data.json');
+
     //-----Admin Settings-----//
 
-    let parts = {
+    let [parts, setParts] = useState({
         cpu: {
             name: 'AMD Ryzen 3 2200G',
             price: '181.98'
         },
-        // ram: {
-        //     name: 'OLOy DDR4 RAM 16GB',
-        //     asin: 'B088T2KNZ4'
-        // },
         ram: {
             name: 'Gigastone DDR4 16GB',
             price: '68.99'
@@ -27,42 +26,26 @@ const Home = () => {
             name: 'EVGA 80+ BRONZE 450W',
             price: '44.43'
         },
-        // storage250: {
-        //     name: 'WD Blue 250GB NVMe M.2 SSD',
-        //     asin: 'B07YFF8879'
-        // },
-        // storage500: {
-        //     name: 'WD Blue 500GB NVMe M.2 SSD',
-        //     asin: 'B07YFF3JCN'
-        // },
-        // storage1000: {
-        //     name: 'WD Blue 1000GB NVMe M.2 SSD',
-        //     asin: 'B07YFFX5MD'
-        // },
-        // storage2000: {
-        //     name: 'WD Blue 2000GB NVMe M.2 SSD',
-        //     asin: 'B08K4NP5DQ'
-        // },
         storage250: {
             name: 'Inland Professional 256GB NVMe M.2 SSD',
             price: '37.99'
         },
-        // storage500: {
-        //     name: 'Inland Professional 512GB NVMe M.2 SSD',
-        //     asin: 'B08KZQYW2D'
-        // },
-        // storage1000: {
-        //     name: 'Inland Professional 1024GB NVMe M.2 SSD',
-        //     asin: 'B08KZPBGXV'
-        // },
+        storage500: {
+            name: 'Inland Professional 512GB NVMe M.2 SSD',
+            asin: 'B08KZQYW2D'
+        },
+        storage1000: {
+            name: 'Inland Professional 1024GB NVMe M.2 SSD',
+            asin: 'B08KZPBGXV'
+        },
+        storage2000: {
+            name: 'WD Blue 2000GB NVMe M.2 SSD',
+            asin: 'B08K4NP5DQ'
+        },
         mobo: {
             name: 'GIGABYTE GA-A320M-S2H',
             price: '90.54'
         },
-        // case: {
-        //     name: 'Rosewill SCM-01B',
-        //     asin: 'B08GNFCB1M'
-        // },
         case: {
             name: 'Rosewill FBM-X2',
             price: '54.87'
@@ -71,7 +54,7 @@ const Home = () => {
             name: 'Cudy WE3000 AX',
             price: '27.90'
         }
-    }
+    });
 
     //----^Admin Settings^----//
 
@@ -87,6 +70,21 @@ useEffect(() => {
         behavior: 'smooth'
       });
 
+    data.forEach((e, i) => {
+        let comp = e.component;
+        let name = e.name;
+        let pri = e.price.slice(1);
+        let use = e.use;
+
+        let nameArr = name.split(" ");
+
+        name = `${nameArr[0]} ${nameArr[1]} ${nameArr[2]} ${nameArr[3]}`
+
+        if(use){
+            parts[comp].name = name;
+            parts[comp].price = pri;
+        }
+    })
     for(let i = 0; i < partsKeys.length; i++){
 
         let priceNew = parts[partsKeys[i]].price;
@@ -102,7 +100,9 @@ useEffect(() => {
 useEffect(() => {
     let sum = 0;
     for(let p = 0; p < Object.keys(prices).length; p++){
-        sum += (+prices[Object.keys(prices)[p]].slice(1));
+        if(Object.keys(prices)[p] !== "storage500" && Object.keys(prices)[p] !== "storage1000" && Object.keys(prices)[p] !== "storage2000"){
+            sum += (+prices[Object.keys(prices)[p]].slice(1));
+        }
     }
     setSum(`$${sum.toFixed(2)}`)
 }, [prices])
@@ -142,7 +142,7 @@ useEffect(() => {
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>AM4 MATX Motherboard</h4>  
+                        <h4>{parts.mobo.name}</h4>  
                         <p>Motherboard</p>  
                     </div>
                     <div className='price'>{prices.mobo ? prices.mobo : <span className='loader'></span>}</div>
@@ -156,21 +156,21 @@ useEffect(() => {
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>16GB of DDR4 @ 300MHz </h4>  
+                        <h4>{parts.ram.name}</h4>  
                         <p>RAM</p>  
                     </div>
                     <div className='price'>{prices.ram ? prices.ram : <span className='loader'></span>}</div>
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>250GB NVMe M.2 SSD</h4>  
+                        <h4>{parts.storage250.name}</h4>  
                         <p>Storage (upgradable)</p>  
                     </div>
                     <div className='price'>{prices.storage250 ? prices.storage250 : <span className='loader'></span>}</div>
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>80+ Bronze Power Supply</h4>  
+                        <h4>{parts.psu.name}</h4>  
                         <p>Power Supply</p>  
                     </div>
                     <div className='price'>{prices.psu ? prices.psu : <span className='loader'></span>}</div>
