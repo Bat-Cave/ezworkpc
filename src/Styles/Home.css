@@ -48,20 +48,22 @@
     width: 100%;
     justify-content: center;
     align-items: center;
+    transition: all .25s ease;
 }
 
-.home .currentBuild div{
+.home .currentBuild > div{
     width: 100%;
     display: flex;
     border-bottom: 6px solid rebeccapurple;
+    justify-content: center;
 }
 
-.home .currentBuild div div{
-    width: 100%;
+.home .currentBuild > div > div{
     display: flex;
     flex-direction: column;
     justify-content: center;
     border-bottom: none;
+    margin-right: 24px;
 }
 
 .home .bragger{
