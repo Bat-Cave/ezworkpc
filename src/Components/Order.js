@@ -558,7 +558,7 @@ const Order = (props) => {
             </section>
             <section>
                 <span id='wifiOption'></span>
-                <h3>Wi-Fi options</h3>
+                <h3>Network options</h3>
                 <p className='bottomBorder'>Do you want each computer to have a Wi-Fi card?</p>
                 <div className='option'>
                     <input type='radio' name='wifi' value='none' onChange={(e) => {
@@ -578,7 +578,7 @@ const Order = (props) => {
                         }))
                         updateOptions(e.target.name, e.target.value)
                         }}/>
-                    <div>Ethernet Port & Wi-Fi {prices.wifi ? <span className='price'>{prices.wifi}</span> : <span className='loader'></span>}</div>
+                    <div>Ethernet Port, Wi-Fi, & Bluetooth {prices.wifi ? <span className='price'>{prices.wifi}</span> : <span className='loader'></span>}</div>
                 </div>
             </section>
             <section>

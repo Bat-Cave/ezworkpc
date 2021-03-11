@@ -120,23 +120,163 @@ useEffect(() => {
             <section>
                 <div className='currentBuild'>
                     <div>
-                        <h2>The Workstation</h2>
-                        <p>Snappy desktop computer that doesn't break the budget.</p>
-                        <br></br>
-                        <h4>Features:</h4>
-                        <ul>
-                            <li>Windows 10 Pro</li>
-                            <li>USB 3.1</li>
-                            <li>HDMI, DVI, and Display Port</li>
-                            <li>1 Gbe Ethernet</li>
-                            <li>16 GB DDR4 2666MHz Memory</li>
-                            <li>2,600 MB/s Read</li>
-                            <li>1,800 MB/s Write</li>
-                            <li>WiFi 6 & Bluetooth 5.0</li>
-                        </ul>
+                        <div>
+                            <h2>The Workstation</h2>
+                            <p>Snappy desktop computer that doesn't break the budget.</p>
+                        </div>
+                        <img src={parts.case.imgsrc} alt="Black Micro ATX Computer Case"/>
+
                     </div>
-                    <img src={compcase}/>
                 </div>
+                </section>
+                <section>
+                    <div className='bragger'>
+                        <div className='spec'>
+                            <h4>Clock Speed</h4>
+                            <div className='spec-left'>
+                                <h2>3.7</h2>
+                                <p>GHz</p>
+                            </div>
+                            <div className='spec-right'>
+                                <i className="fas fa-tachometer-alt"></i>
+                            </div>
+                        </div>
+                        <div className='spec'>
+                            <h4>CPU Cores</h4>
+                            <div className='spec-left'>
+                                <h2>4</h2>
+                                <p>Cores</p>
+                            </div>
+                            <div className='spec-right'>
+                                <i className="fas fa-th-large"></i>
+                            </div>
+                        </div>
+                        <div className='spec'>
+                            <h4>Memory</h4>
+                            <div className='spec-left'>
+                                <h2>16</h2>
+                                <p>GB @ 2666 Mhz</p>
+                            </div>
+                            <div className='spec-right'>
+                                <i className="fas fa-memory"></i>
+                            </div>
+                        </div>
+                        <div className='spec'>
+                            <h4>Bluetooth Version</h4>
+                            <div className='spec-left'>
+                                <h2>5.1</h2>
+                                <p></p>
+                            </div>
+                            <div className='spec-right'>
+                                <i className="fab fa-bluetooth"></i>
+                            </div>
+                        </div>
+                        <div className='spec'>
+                            <h4>Network Speed</h4>
+                            <div className='spec-left'>
+                                <h2>2,400</h2>
+                                <p>Mbps</p>
+                            </div>
+                            <div className='spec-right'>
+                                <i className="fas fa-wifi"></i>
+                            </div>
+                            <div className='compare'>
+                                <h6>Compare</h6>
+                                <div className='compare-row'>
+                                    <p>WiFi 6</p>
+                                    <h5>2,400 <span className='comp-little'>Mbps</span></h5>
+                                </div>
+                                <div className='compare-row'>
+                                    <p>WiFi 5</p>
+                                    <h5>1,200<span className='comp-little'>Mbps</span></h5>
+                                </div>
+                                <div className='compare-row'>
+                                    <p>WiFi 4</p>
+                                    <h5>300<span className='comp-little'>Mbps</span></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='spec'>
+                            <h4>Storage Read Speed</h4>
+                            <div className='spec-left'>
+                                <h2>2,100</h2>
+                                <p>MB/s</p>
+                            </div>
+                            <div className='spec-right'>
+                                <i className="fas fa-glasses"></i>
+                            </div>
+                            <div className='compare'>
+                                <h6>Compare</h6>
+                                <div className='compare-row'>
+                                    <p>NVMe</p>
+                                    <h5>2,100 <span className='comp-little'>MB/s</span></h5>
+                                </div>
+                                <div className='compare-row'>
+                                    <p>SSD</p>
+                                    <h5>550 <span className='comp-little'>MB/s</span></h5>
+                                </div>
+                                <div className='compare-row'>
+                                    <p>HDD</p>
+                                    <h5>115 <span className='comp-little'>MB/s</span></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='spec'>
+                            <h4>Storage Write Speed</h4>
+                            <div className='spec-left'>
+                                <h2>1,500</h2>
+                                <p>MB/s</p>
+                            </div>
+                            <div className='spec-right'>
+                                <i className="fas fa-pen"></i>
+                            </div>
+                            <div className='compare'>
+                                <h6>Compare</h6>
+                                <div className='compare-row'>
+                                    <p>NVMe</p>
+                                    <h5>1,500<span className='comp-little'>MB/s</span></h5>
+                                </div>
+                                <div className='compare-row'>
+                                    <p>SSD</p>
+                                    <h5>500 <span className='comp-little'>MB/s</span></h5>
+                                </div>
+                                <div className='compare-row'>
+                                    <p>HDD</p>
+                                    <h5>100 <span className='comp-little'>MB/s</span></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='spec'>
+                            <h4>Operations per Second</h4>
+                            <div className='spec-left'>
+                                <h2><span className='comp-little'>Up To</span>500k</h2>
+                                <p>IOPS</p>
+                            </div>
+                            <div className='spec-right'>
+                                <i className="fas fa-tasks"></i>
+                            </div>
+                            <div className='compare'>
+                                <h6>Compare</h6>
+                                <div className='compare-row'>
+                                    <p>NVMe</p>
+                                    <h5><span className='comp-little'>UP TO</span>500,000<span className='comp-little'>IOPS</span></h5>
+                                </div>
+                                <div className='compare-row'>
+                                    <p>SSD</p>
+                                    <h5><span className='comp-little'>UP TO</span>100,000<span className='comp-little'>IOPS</span></h5>
+                                </div>
+                                <div className='compare-row'>
+                                    <p>HDD</p>
+                                    <h5><span className='comp-little'>UP TO</span>100<span className='comp-little'>IOPS</span></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <Link to='/order'>Order Now</Link>
+                </section>
+                <section>
                 <h3>Estimated Component Prices</h3>
                 <div className='row'>
                     <div>
@@ -195,9 +335,6 @@ useEffect(() => {
                     <div className='price'>*{sum}</div>
                 </div>
                 <p className='disclaimer'>*Not the final price. This is only an estimation based on the prices for the products found on Amazon.com.</p>
-            </section>
-            <section>
-                <Link to='/order'>Order Now</Link>
             </section>
         </div>
     )
