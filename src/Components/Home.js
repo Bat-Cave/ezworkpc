@@ -75,6 +75,8 @@ useEffect(() => {
         let name = e.name;
         let pri = e.price.slice(1);
         let use = e.use;
+        let img = e.imgsrc;
+        let link = e.link;
 
         let nameArr = name.split(" ");
 
@@ -83,6 +85,8 @@ useEffect(() => {
         if(use){
             parts[comp].name = name;
             parts[comp].price = pri;
+            parts[comp].imgsrc = img;
+            parts[comp].link = link;
         }
     })
     for(let i = 0; i < partsKeys.length; i++){
@@ -121,10 +125,11 @@ useEffect(() => {
                         <br></br>
                         <h4>Features:</h4>
                         <ul>
+                            <li>Windows 10 Pro</li>
                             <li>USB 3.1</li>
                             <li>HDMI, DVI, and Display Port</li>
                             <li>1 Gbe Ethernet</li>
-                            <li>16 GB DDR4 3000MHz Memory</li>
+                            <li>16 GB DDR4 2666MHz Memory</li>
                             <li>2,600 MB/s Read</li>
                             <li>1,800 MB/s Write</li>
                             <li>WiFi 6 & Bluetooth 5.0</li>
@@ -135,49 +140,49 @@ useEffect(() => {
                 <h3>Estimated Component Prices</h3>
                 <div className='row'>
                     <div>
-                        <h4>{parts.case.name}</h4>  
+                        <h4><a href={parts.case.link} target="_blank">{parts.case.name}</a></h4>  
                         <p>Case</p>  
                     </div>
                     <div className='price'>{prices.case ? prices.case : <span className='loader'></span>}</div>
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>{parts.mobo.name}</h4>  
+                        <h4><a href={parts.mobo.link} target="_blank">{parts.mobo.name}</a></h4>  
                         <p>Motherboard</p>  
                     </div>
                     <div className='price'>{prices.mobo ? prices.mobo : <span className='loader'></span>}</div>
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>{parts.cpu.name}</h4>  
+                        <h4><a href={parts.cpu.link} target="_blank">{parts.cpu.name}</a></h4>  
                         <p>CPU/GPU</p>  
                     </div>
                     <div className='price'>{prices.cpu ? prices.cpu : <span className='loader'></span>}</div>
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>{parts.ram.name}</h4>  
+                        <h4><a href={parts.ram.link} target="_blank">{parts.ram.name}</a></h4>  
                         <p>RAM</p>  
                     </div>
                     <div className='price'>{prices.ram ? prices.ram : <span className='loader'></span>}</div>
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>{parts.storage250.name}</h4>  
+                        <h4><a href={parts.storage250.link} target="_blank">{parts.storage250.name}</a></h4>  
                         <p>Storage (upgradable)</p>  
                     </div>
                     <div className='price'>{prices.storage250 ? prices.storage250 : <span className='loader'></span>}</div>
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>{parts.psu.name}</h4>  
+                        <h4><a href={parts.psu.link} target="_blank">{parts.psu.name}</a></h4>  
                         <p>Power Supply</p>  
                     </div>
                     <div className='price'>{prices.psu ? prices.psu : <span className='loader'></span>}</div>
                 </div>
                 <div className='row'>
                     <div>
-                        <h4>{parts.wifi.name}</h4>  
+                        <h4><a href={parts.wifi.link} target="_blank">{parts.wifi.name}</a></h4>  
                         <p>Wi-Fi & Bluetooth Card (optional)</p>  
                     </div>
                     <div className='price'>{prices.wifi ? prices.wifi : <span className='loader'></span>}</div>
