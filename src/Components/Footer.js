@@ -12,7 +12,7 @@ const Footer = () => {
                 <h3>Contact</h3>
                 <p>Rico Hancock</p>
                 <p>ezworkpc@gmail.com</p>
-                <p>480 686 1517</p>
+                <p>(415) 952-3972</p>
             </div>
             <div>
                 <img src={logo} />
