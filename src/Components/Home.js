@@ -2,6 +2,7 @@ import '../Styles/Home.css';
 import React, { useState, useEffect } from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import Banner from './Banner';
+import ReactGA from 'react-ga';
 
 
 
@@ -61,8 +62,14 @@ const Home = () => {
     let [sum, setSum] = useState('');
     
     let partsKeys = Object.keys(parts)
+    
+    const trackingId = "G-GHRF9C1FSK";
+    ReactGA.initialize(trackingId);
 
 useEffect(() => {
+    
+    document.title = "ezworkpc - Home";
+
     window.scrollTo({
         top: 0,
         left: 0,
@@ -121,7 +128,10 @@ useEffect(() => {
                                 <p>Snappy desktop computer that doesn't break the budget.</p>
                                 <br></br>
                                 <br></br>
-                                <Link to='/order'>Order Now</Link>
+                                <Link to='/order' onClick={() => ReactGA.event({
+                                    category: "Order Link",
+                                    action: "Order Link Clicked",
+                                })}>Order Now</Link>
                             </div>
                             <img src={parts.case.imgsrc} alt="Black Micro ATX Computer Case"/>
 
@@ -291,7 +301,10 @@ useEffect(() => {
                     </div>
                 </section>
                 <section>
-                    <Link to='/order'>Order Now</Link>
+                    <Link to='/order' onClick={() => ReactGA.event({
+                        category: "Order Link",
+                        action: "Order Link Clicked",
+                    })}>Order Now</Link>
                 </section>
                 <section>
                 <h3>Estimated Component Prices</h3>

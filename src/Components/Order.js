@@ -111,6 +111,9 @@ const Order = (props) => {
     let partsKeys = Object.keys(parts)
 
     useEffect(() => {
+    
+        document.title = "ezworkpc - Order";
+    
         window.scrollTo({
             top: 0,
             left: 0,
@@ -521,7 +524,7 @@ const Order = (props) => {
                         }))
                         updateOptions(e.target.name, e.target.value)
                     }}/>
-                    <div>{parts.storage250.name} {prices.storage250 ? <span className='price'>{prices.storage250}</span> : <span className='loader'></span>}</div>
+                    <div>250GB: {parts.storage250.name} {prices.storage250 ? <span className='price'>{prices.storage250}</span> : <span className='loader'></span>}</div>
                 </div>
                 <div className='option'>
                     <input type='radio' name='storage' value='storage500' onChange={(e) => {
@@ -531,7 +534,7 @@ const Order = (props) => {
                         }))
                         updateOptions(e.target.name, e.target.value)
                     }}/>
-                    <div>{parts.storage500.name} {prices.storage500 ? <span className='price'>{prices.storage500}</span> : <span className='loader'></span>}</div>
+                    <div>500GB: {parts.storage500.name} {prices.storage500 ? <span className='price'>{prices.storage500}</span> : <span className='loader'></span>}</div>
                 </div>
                 <div className='option'>
                     <input type='radio' name='storage' value='storage1000' onChange={(e) => {
@@ -541,7 +544,7 @@ const Order = (props) => {
                         }))
                         updateOptions(e.target.name, e.target.value)
                     }}/>
-                    <div>{parts.storage1000.name} {prices.storage1000 ? <span className='price'>{prices.storage1000}</span> : <span className='loader'></span>}</div>
+                    <div>1000GB: {parts.storage1000.name} {prices.storage1000 ? <span className='price'>{prices.storage1000}</span> : <span className='loader'></span>}</div>
                 </div>
                 <div className='option'>
                     <input type='radio' name='storage' value='storage2000' onChange={(e) => {
@@ -551,7 +554,7 @@ const Order = (props) => {
                         }))
                         updateOptions(e.target.name, e.target.value)
                     }}/>
-                    <div>{parts.storage2000.name} {prices.storage2000 ? <span className='price'>{prices.storage2000}</span> : <span className='loader'></span>}</div>
+                    <div>2000GB: {parts.storage2000.name} {prices.storage2000 ? <span className='price'>{prices.storage2000}</span> : <span className='loader'></span>}</div>
                 </div>
             </section>
             <section>

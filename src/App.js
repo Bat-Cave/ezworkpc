@@ -4,15 +4,17 @@ import Footer from './Components/Footer';
 import routes from './routes';
 import { HashRouter } from 'react-router-dom';
 
+
+
 function App() {
   return (
     <div className="App">
       <HashRouter>
         <Nav />
-      <div className='container'>
-        {routes}
-      </div>
-      <Footer />
+        <div className='container'>
+          {routes}
+        </div>
+        <Footer />
       </HashRouter>
     </div>
   );

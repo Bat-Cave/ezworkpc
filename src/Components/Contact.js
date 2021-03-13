@@ -15,6 +15,9 @@ const Contact = (props) => {
 
 
     useEffect(() => {
+    
+        document.title = "ezworkpc - Contact";
+    
         window.scrollTo({
             top: 0,
             left: 0,

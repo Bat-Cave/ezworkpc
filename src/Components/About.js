@@ -7,6 +7,9 @@ import Banner from './Banner';
 const About = () => {
 
     useEffect(() => {
+    
+        document.title = "ezworkpc - About";
+    
         window.scrollTo({
             top: 0,
             left: 0,
