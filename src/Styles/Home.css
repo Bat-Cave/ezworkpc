@@ -73,6 +73,11 @@
     margin-right: 24px;
 }
 
+.home .currentBuild a{
+    width: 50%;
+    margin: 0 auto;
+}
+
 .home .bragger{
     width: 100%;
     display: flex;

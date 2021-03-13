@@ -119,6 +119,9 @@ useEffect(() => {
                             <div>
                                 <h2>The Workstation</h2>
                                 <p>Snappy desktop computer that doesn't break the budget.</p>
+                                <br></br>
+                                <br></br>
+                                <Link to='/order'>Order Now</Link>
                             </div>
                             <img src={parts.case.imgsrc} alt="Black Micro ATX Computer Case"/>
 
