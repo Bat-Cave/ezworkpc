@@ -1,5 +1,6 @@
 import '../Styles/About.css';
 import React, { useEffect } from 'react';
+import Banner from './Banner';
 
 
 
@@ -15,7 +16,7 @@ const About = () => {
 
     return(
         <div className='about'>
-            <section></section>
+            <Banner phrase="Howdy." />
             <section>
                 <h2>Hi, my name is Rico.</h2>
             </section>

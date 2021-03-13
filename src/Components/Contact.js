@@ -1,6 +1,7 @@
 import '../Styles/Contact.css';
 import React, { useEffect, useState } from 'react';
 import emailjs from 'emailjs-com';
+import Banner from './Banner';
 
 
 const Contact = (props) => {
@@ -69,10 +70,7 @@ const Contact = (props) => {
 
     return(
         <div className='contact'>
-            <section>
-                <h1>Have a Question?</h1>
-                <h3>Shoot me a message!</h3>
-            </section>
+            <Banner phrase="Have a question?" />
             <section>
                 <input className='check' type='text' name='respondEmail' value={inputs.firstName} placeholder='Enter Your Email...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>
                 <input className='check' type='text' name='subject' value={inputs.firstName} placeholder='Subject...' onChange={(e) => handleInput(e.target.name, e.target.value)}/>

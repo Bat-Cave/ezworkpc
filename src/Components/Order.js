@@ -6,7 +6,7 @@ import axios from "axios";
 import { init } from 'emailjs-com';
 import emailjs from 'emailjs-com';
 import termsAndConditions from '../../src/TermsandConditions.pdf';
-import logo from '../Cheese.png';
+import Banner from './Banner';
 init("user_V9dVOdqrRCfPsTshTaIcD");
 
 
@@ -453,9 +453,7 @@ const Order = (props) => {
 
     return(
         <div className='order'>
-            <section>
-                <h1>Let's get this rolling.</h1>
-            </section>
+            <Banner phrase="Let's get this rolling." />
             <h2>Order</h2>
             <section>
                 <h3>How many computers do you need?</h3>

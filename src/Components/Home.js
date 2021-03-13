@@ -1,8 +1,7 @@
 import '../Styles/Home.css';
 import React, { useState, useEffect } from 'react';
-import axios from "axios";
-import compcase from '../case-transparent.png';
 import {Link, withRouter} from 'react-router-dom';
+import Banner from './Banner';
 
 
 
@@ -112,24 +111,39 @@ useEffect(() => {
 }, [prices])
 
     return(
-        <div className='home'>
-            <br></br>
-            <section>
-                <h1>It's Easy Cheesy.</h1>
-            </section>
-            <section>
-                <div className='currentBuild'>
-                    <div>
+            <div className='home'>
+                <Banner phrase="It's Easy Cheesy." />
+                <section>
+                    <div className='currentBuild'>
                         <div>
-                            <h2>The Workstation</h2>
-                            <p>Snappy desktop computer that doesn't break the budget.</p>
-                        </div>
-                        <img src={parts.case.imgsrc} alt="Black Micro ATX Computer Case"/>
+                            <div>
+                                <h2>The Workstation</h2>
+                                <p>Snappy desktop computer that doesn't break the budget.</p>
+                            </div>
+                            <img src={parts.case.imgsrc} alt="Black Micro ATX Computer Case"/>
 
+                        </div>
                     </div>
-                </div>
                 </section>
                 <section>
+                    <h2>How it works</h2>
+                    <div className='how-it-works'>
+                        <div className='hiw-row'>
+                            <h2>Step 1</h2>
+                            <p>Specify how many computers and how much storage you need, and if you need Wi-Fi or not. (all computers come with an Ethernet port)</p>
+                        </div>
+                        <div className='hiw-row'>
+                            <h2>Step 2</h2>
+                            <p>I buy the parts and build the computers.</p>
+                        </div>
+                        <div className='hiw-row'>
+                            <h2>Step 3</h2>
+                            <p>I send the computers to you ready to plug in and play.</p>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h2>Specifications</h2>
                     <div className='bragger'>
                         <div className='spec'>
                             <h4>Clock Speed</h4>
@@ -142,13 +156,13 @@ useEffect(() => {
                             </div>
                         </div>
                         <div className='spec'>
-                            <h4>CPU Cores</h4>
+                            <h4>Windows Version</h4>
                             <div className='spec-left'>
-                                <h2>4</h2>
-                                <p>Cores</p>
+                                <h2>10</h2>
+                                <p>Pro</p>
                             </div>
                             <div className='spec-right'>
-                                <i className="fas fa-th-large"></i>
+                                <i className="fab fa-windows"></i>
                             </div>
                         </div>
                         <div className='spec'>

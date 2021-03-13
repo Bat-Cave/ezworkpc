@@ -1,5 +1,6 @@
 import '../Styles/Thanks.css';
 import React, { useEffect, useState } from 'react';
+import Banner from './Banner';
 
 
 
@@ -16,9 +17,7 @@ const Thanks = () => {
 
     return(
         <div className='thanks'>
-            <section>
-                <h1>Thank you.</h1>
-            </section>
+            <Banner phrase="Thank you." />
             <section>
                 <p>Thank you for your order! I sent you a confirmation email with the order details. Here is what will happen next:</p>
                 <br></br>

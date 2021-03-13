@@ -10,39 +10,27 @@
     padding: 0 2%;
     transition: all .25s ease;
     z-index: 11110;
-    border-bottom: 2px solid black;
 }
 
-.nav img{
-    width: 80px;
-    margin: 50px 20px 0 20px;
+.nav a{
+    font-family: 'Inconsolata', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-.nav .home-icon{
-    padding: 0;
-    margin-left: -100px;
-}
-.nav .home-icon:hover{
-    background: rebeccapurple;
-    color: white;
-    padding: 0;
-}
 
 @media only screen and (max-width: 500px) {
     .nav {
         height: 40px;
     }
     .nav a{
-        padding: 0 8px;
-        font-size: 12px;
+        padding: 0 16px;
+        font-size: 16px;
     }
     .nav .home-icon{
         padding: 0;
         margin-left: -20px;
-    }
-    .nav img{
-        width: 32px;
-        margin: 4px ;
+        display: none;
     }
 }
 
@@ -55,7 +43,7 @@
 
 @media only screen and (max-width: 1200px) and (min-width: 800px) {
     .nav a{
-        font-size: 12px;
+        font-size: 16px;
     }
 }
 
