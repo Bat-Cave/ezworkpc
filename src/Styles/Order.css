@@ -13,7 +13,6 @@
 }
 
 .order h1{
-    font-size: 4rem;
     text-transform: uppercase;
     text-align: center;
 }
@@ -40,7 +39,9 @@
     width: 100%;
     text-align: left;
 }
-
+.order section h3:first-child{
+    text-align: center;
+}
 .order section:nth-of-type(2) h3{
     width: 100%;
     text-align: center;

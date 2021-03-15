@@ -2,17 +2,16 @@ import '../Styles/Contact.css';
 import React, { useEffect, useState } from 'react';
 import emailjs from 'emailjs-com';
 import Banner from './Banner';
+import ReactGA from 'react-ga';
 
 
-const Contact = (props) => {
+const Contact = () => {
     let [inputs, setInputs] = useState({ 
                                             subject: '',
                                             respondEmail: '',
                                             message: ''
                                     });
     let [messageSent, setMessageSent] = useState(false);
-
-
 
     useEffect(() => {
     
@@ -24,6 +23,7 @@ const Contact = (props) => {
             behavior: 'smooth'
           });
     }, [])
+
     let handleInput = (name, value) => {
         setInputs(prev => ({
             ...prev,

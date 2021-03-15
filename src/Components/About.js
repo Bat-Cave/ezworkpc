@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import Banner from './Banner';
 
 
-
 const About = () => {
 
     useEffect(() => {

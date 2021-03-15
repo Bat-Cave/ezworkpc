@@ -5,9 +5,7 @@ import Banner from './Banner';
 import ReactGA from 'react-ga';
 
 
-
 const Home = () => {
-
 
     let data = require('../data.json');
 
@@ -63,8 +61,6 @@ const Home = () => {
     
     let partsKeys = Object.keys(parts)
     
-    const trackingId = "G-GHRF9C1FSK";
-    ReactGA.initialize(trackingId);
 
 useEffect(() => {
     
@@ -128,10 +124,14 @@ useEffect(() => {
                                 <p>Snappy desktop computer that doesn't break the budget.</p>
                                 <br></br>
                                 <br></br>
-                                <Link to='/order' onClick={() => ReactGA.event({
-                                    category: "Order Link",
-                                    action: "Order Link Clicked",
-                                })}>Order Now</Link>
+                                <Link to='/order' onClick={() => {
+                                    ReactGA.event({
+                                        category: 'Links',
+                                        action: 'Clicked First Order Link',
+                                        label: 'Order Now',
+                                        value: 1
+                                      });
+                                }}>Order Now</Link>
                             </div>
                             <img src={parts.case.imgsrc} alt="Black Micro ATX Computer Case"/>
 
@@ -301,10 +301,14 @@ useEffect(() => {
                     </div>
                 </section>
                 <section>
-                    <Link to='/order' onClick={() => ReactGA.event({
-                        category: "Order Link",
-                        action: "Order Link Clicked",
-                    })}>Order Now</Link>
+                    <Link to='/order' onClick={() => {
+                        ReactGA.event({
+                            category: 'Links',
+                            action: 'Clicked Second Order Link',
+                            label: 'Order Now',
+                            value: 1
+                            });
+                    }}>Order Now</Link>
                 </section>
                 <section>
                 <h3>Estimated Component Prices</h3>

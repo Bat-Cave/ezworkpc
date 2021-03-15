@@ -70,6 +70,12 @@
 }
 
 
+@keyframes fade-in{
+    0%{opacity: 0}
+    90%{opacity: 1}
+    100%{opacity: 1}
+}
+
 @media only screen and (max-width: 900px) {
     .banner h1{
         font-size: 3rem;
