@@ -18,10 +18,6 @@ const Banner = (props) => {
                 elms[c].style.transform = `translateX(${x}) translateY(${y}) rotate(${mov*(c*25)*45}deg)`;
             }
         })
-        b.querySelector('h1').style.animation = "fade-in 1s ease";
-        setTimeout(() => {
-            b.querySelector('h1').style.animation = "";
-        }, 1900)
     }, [])
 
     return(

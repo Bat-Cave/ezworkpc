@@ -131,7 +131,10 @@ useEffect(() => {
                                         label: 'Order Now',
                                         value: 1
                                       });
-                                }}>Order Now</Link>
+                                }}>
+                                    <div className="front">Order Now</div>
+                                    <div className="back">Order Now</div>
+                                </Link>
                             </div>
                             <img src={parts.case.imgsrc} alt="Black Micro ATX Computer Case"/>
 
@@ -304,11 +307,14 @@ useEffect(() => {
                     <Link to='/order' onClick={() => {
                         ReactGA.event({
                             category: 'Links',
-                            action: 'Clicked Second Order Link',
+                            action: 'Clicked First Order Link',
                             label: 'Order Now',
                             value: 1
                             });
-                    }}>Order Now</Link>
+                    }}>
+                        <div className="front">Order Now</div>
+                        <div className="back">Order Now</div>
+                    </Link>
                 </section>
                 <section>
                 <h3>Estimated Component Prices</h3>

@@ -7,6 +7,7 @@ import { init } from 'emailjs-com';
 import emailjs from 'emailjs-com';
 import termsAndConditions from '../../src/TermsandConditions.pdf';
 import Banner from './Banner';
+import ReactGA from 'react-ga';
 init("user_V9dVOdqrRCfPsTshTaIcD");
 
 
@@ -607,7 +608,7 @@ const Order = (props) => {
                 <p className='disclaimer'>*Approximate price. Price may change due to computer part prices and availablity. A final invoice will be sent to you once the parts are ordered and the computers are built.</p>
             </section>
             <section>
-                <div className='option buttons'>
+                <div className='buttons'>
                     {isLoading ? (
                         <div className='loader'></div>
                         ) : (
@@ -627,8 +628,18 @@ const Order = (props) => {
                             setTimeout(() => {
                                 document.getElementById("contactInfo").scrollIntoView({behavior: 'smooth', block: 'start'});
                                 setIsLoading(false)
-                            }, 500)
-                        }}>Continue</button>)
+                            }, 500) 
+                            ReactGA.event({
+                                category: 'Order Buttons',
+                                action: 'Continue Clicked',
+                                label: 'Continue',
+                                value: 1
+                            });
+                            
+                        }}>
+                            <div className="front">Continue</div>
+                            <div className="back">Continue</div>
+                        </button>)
                     }
                 </div>
             <span id='contactInfo'></span>
@@ -663,21 +674,39 @@ const Order = (props) => {
                     </div>
                 </section>
                 <section>
-                    <div className='option buttons'>
+                    <div className='buttons'>
                     {isLoading ? (
                         <div className='loader'></div>
                         ) : (
                         <button onClick={(e) => {
                             submitRequest(e);
-                            setIsLoading(true)
-                        }}>Submit</button>)
+                            setIsLoading(true);
+                            ReactGA.event({
+                                category: 'Order Buttons',
+                                action: 'Submit Clicked',
+                                label: 'Submit',
+                                value: 1
+                            });
+                        }}>
+                            <div className="front">Submit</div>
+                            <div className="back">Submit</div>
+                        </button>)
                     }
                     {isLoading ? (
                         <div className='loader'></div>
                         ) : (
                         <Link replace to='/order' onClick={(e) => {
                             setOrderSubmitted('');
-                        }}>Cancel</Link>)
+                            ReactGA.event({
+                                category: 'Order Buttons',
+                                action: 'Cancel Clicked',
+                                label: 'Cancel',
+                                value: 1
+                            });
+                        }}>
+                            <div className="front">Cancel</div>
+                            <div className="back">Cancel</div>
+                        </Link>)
                     }
                     </div>
                     <div className='buttons'>

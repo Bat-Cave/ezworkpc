@@ -140,10 +140,13 @@
     cursor: pointer;
     font-size: 24px;
     border: 2px solid rebeccapurple;
+    background: rebeccapurple;
+    min-width: 30%;
 }
 #quant-element button:hover{
     color: white;
     background: rebeccapurple;
+    transform: rotateZ(0) translateZ(0);
 }
 #quant-element button:focus{
     outline: none;
@@ -262,15 +265,7 @@
     text-align: center;
 }
 
-.order .submitted div{
-    width: 100%;
-    height: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-}
+
 .order .submitted section{
     width: 80%;
     display: flex;
@@ -278,21 +273,7 @@
     margin: 32px 0;
     transition: all .25s ease;
 }
-.order .submitted a{
-    width: 200px;
-    height: 75px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    margin: 8px;
-    background: rebeccapurple;
-}
-.order .submitted a:hover{
-    background: white;
-    color: rebeccapurple
-}
+
 .order .buttons{
     width: 100%;
     display: flex;
@@ -301,6 +282,7 @@
     align-items: center;
     text-align: center;
     margin: 0;
+    position: relative;
 }
 .order .submitted .buttons{
     width: 100%;

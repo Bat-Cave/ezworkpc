@@ -2,30 +2,42 @@
     position: sticky;
     top: 0;
     height: 60px;
-    width: 100%;
-    background: rebeccapurple;
+    width: 600px;
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 2%;
+    padding: 0;
     transition: all .25s ease;
     z-index: 11110;
+    margin: 0 auto;
 }
 
 .nav a{
     font-family: 'Inconsolata', monospace;
     letter-spacing: 1px;
     text-transform: uppercase;
+    height: 100%;
+    min-width: 0;
+    background: transparent;
+    line-height: 60px;
+}
+
+.nav a:focus{
+    box-shadow: none;
 }
 
 
 @media only screen and (max-width: 500px) {
     .nav {
         height: 40px;
+        width: 100%;
+        margin: 0;
     }
     .nav a{
         padding: 0 16px;
         font-size: 16px;
+        min-width: 0;
     }
     .nav .home-icon{
         padding: 0;
@@ -35,9 +47,13 @@
 }
 
 @media only screen and (max-width: 800px) and (min-width: 500px) {
+    .nav {
+        width: 100%;
+        margin: 0;
+    }
     .nav a{
         padding: 0 24px;
-        font-size: 12px;
+        font-size: 16px;
     }
 }
 

@@ -81,7 +81,10 @@ const Contact = () => {
             </section>
             <section>
                 {!messageSent ? (
-                    <button onClick={()=> sendEmail()}>Send Message</button>
+                    <button onClick={()=> sendEmail()}>
+                        <div className="front">Send Message</div>
+                        <div className="back">Send Message</div>
+                    </button>
                 ) : (
                     <h3>Thanks! I got your message. You'll receive a response within 24 hours.</h3>
                 )}

@@ -1,95 +1,139 @@
-.banner{
-    width: 100%;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 50px;
-    background: rebeccapurple;
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: white;
-    overflow: hidden;
-    transition: all .25s ease;
+.banner {
+  width: 100%;
+  height: 260px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  background: rebeccapurple;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  transform: translateY(-60px);
 }
-.shadow{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 10px;
-    background: rgb(255,255,255);
-    background: linear-gradient(180deg, rgba(255,255,255,0), rgba(0,0,0,1) 100%);
-    z-index: 10000;
+.shadow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0),
+    rgba(0, 0, 0, 1) 100%
+  );
+  z-index: 10000;
 }
-.banner h1{
+.banner h1 {
     font-size: 4rem;
     text-transform: uppercase;
-    transition: all .25s ease;
+    transition: all 0.25s ease;
     z-index: 1000;
     -webkit-text-stroke: 2px black;
     pointer-events: none;
+    -webkit-animation: tracking-in-expand-fwd-bottom 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    animation: tracking-in-expand-fwd-bottom 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
 
-.banner img{
-    position: absolute;
-    z-index: 100;
-    pointer-events: none;
+.banner img {
+  position: absolute;
+  z-index: 100;
+  pointer-events: none;
 }
 
-.banner .cheese-1{
-    width: 60px;
-    left: 19%;
-    top: 20px;
-    transform: rotate(0deg);
+.banner .cheese-1 {
+  width: 60px;
+  left: 19%;
+  top: 20px;
+  transform: rotate(0deg);
 }
-.banner .cheese-2{
-    width: 40px;
-    right: 18%;
-    top: 10px;
-    transform: rotate(37.5deg);
+.banner .cheese-2 {
+  width: 40px;
+  right: 18%;
+  top: 10px;
+  transform: rotate(37.5deg);
 }
-.banner .cheese-3{
-    width: 80px;
-    left: calc(50% - 150px);
-    top: 100px;
-    transform: rotate(150deg);
+.banner .cheese-3 {
+  width: 80px;
+  left: calc(50% - 150px);
+  top: 100px;
+  transform: rotate(150deg);
 }
-.banner .cheese-4{
-    width: 100px;
-    left: calc(50% + 120px);
-    top: 20px;
-    transform: rotate(281.25deg);
+.banner .cheese-4 {
+  width: 100px;
+  left: calc(50% + 120px);
+  top: 20px;
+  transform: rotate(281.25deg);
 }
-.banner .cheese-5{
-    width: 20px;
-    left: calc(50% + 60px);
-    top: 20px;
-    transform: rotate(75deg);
+.banner .cheese-5 {
+  width: 20px;
+  left: calc(50% + 60px);
+  top: 30px;
+  transform: rotate(75deg);
 }
 
-
-@keyframes fade-in{
-    0%{opacity: 0}
-    90%{opacity: 1}
-    100%{opacity: 1}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes tracking-in-expand-fwd-bottom {
+  0% {
+    letter-spacing: -0.5em;
+    -webkit-transform: translateZ(-700px) translateY(500px);
+    transform: translateZ(-700px) translateY(500px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: translateZ(0) translateY(0);
+    transform: translateZ(0) translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-expand-fwd-bottom {
+  0% {
+    letter-spacing: -0.5em;
+    -webkit-transform: translateZ(-700px) translateY(500px);
+    transform: translateZ(-700px) translateY(500px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: translateZ(0) translateY(0);
+    transform: translateZ(0) translateY(0);
+    opacity: 1;
+  }
 }
 
 @media only screen and (max-width: 900px) {
-    .banner h1{
-        font-size: 3rem;
-        text-transform: uppercase;
-    }
+  .banner h1 {
+    font-size: 3rem;
+    text-transform: uppercase;
+  }
 }
 
 @media only screen and (max-width: 500px) {
-    .banner{
-        width: calc(100% + 16px);
-        transform: translateX(-8px);
-    }
-    .banner h1{
-        font-size: 3rem;
-        text-transform: uppercase;
-    }
+  .banner {
+    width: calc(100% + 16px);
+    transform: translateX(-8px) translateY(-60px);
+  }
+  .banner h1 {
+    font-size: 3rem;
+    text-transform: uppercase;
+  }
 }
