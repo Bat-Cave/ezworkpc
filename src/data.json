@@ -2,25 +2,25 @@
     {
         "use": false,
         "imgsrc": "https://m.media-amazon.com/images/I/81FURWqALxL._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/Rosewill-SCM-01B-Black-Plastic-Computer/dp/B08GNFCB1M/ref=sr_1_1?dchild=1&keywords=B08GNFCB1M&qid=1615854302&sr=8-1",
+        "link": "https://www.amazon.com/Rosewill-SCM-01B-Black-Plastic-Computer/dp/B08GNFCB1M/ref=sr_1_1?dchild=1&keywords=B08GNFCB1M&qid=1616372896&sr=8-1",
         "asin": "B08GNFCB1M",
         "name": "Rosewill SCM-01B Black Steel/Plastic Micro ATX Mini Tower Computer Case",
         "price": "$34.99",
         "component": "case"
     },
     {
-        "use": false,
+        "use": true,
         "imgsrc": "https://m.media-amazon.com/images/I/61DRWdTZrNL._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/Antec-Affordable-Builder-Friendly-Mid-Tower-Ports/dp/B00IVZW2TS/ref=sr_1_1?dchild=1&keywords=B00IVZW2TS&qid=1615854302&sr=8-1",
+        "link": "https://www.amazon.com/Antec-Affordable-Builder-Friendly-Mid-Tower-Ports/dp/B00IVZW2TS/ref=sr_1_1?dchild=1&keywords=B00IVZW2TS&qid=1616372896&sr=8-1",
         "asin": "B00IVZW2TS",
         "name": "Antec VSK VSK3000E U3 Black SGCC Steel Mini Tower Case",
         "price": "$37.99",
         "component": "case"
     },
     {
-        "use": true,
+        "use": false,
         "imgsrc": "https://m.media-amazon.com/images/I/71HLmbqxghL._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/ROSEWILL-Computer-plastic-computer-FBM-01/dp/B005LIDU5S/ref=sr_1_1?dchild=1&keywords=B005LIDU5S&qid=1615854302&sr=8-1",
+        "link": "https://www.amazon.com/ROSEWILL-Computer-plastic-computer-FBM-01/dp/B005LIDU5S/ref=sr_1_1?dchild=1&keywords=B005LIDU5S&qid=1616372896&sr=8-1",
         "asin": "B005LIDU5S",
         "name": "ROSEWILL Micro ATX Mini Tower Computer Case Steel and plastic computer case with 1x 120mm front fan and 1x 80mm rear fan Front I/O and 2x USB 2.0 (FBM-01)",
         "price": "$33.99",
@@ -29,7 +29,7 @@
     {
         "use": false,
         "imgsrc": "https://m.media-amazon.com/images/I/711aAqymAiL._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/Rosewill-Micro-ATX-Computer-12-5-Inch-LINE-M/dp/B00AAJ0ZGK/ref=sr_1_1?dchild=1&keywords=B00AAJ0ZGK&qid=1615854302&sr=8-1",
+        "link": "https://www.amazon.com/Rosewill-Micro-ATX-Computer-12-5-Inch-LINE-M/dp/B00AAJ0ZGK/ref=sr_1_1?dchild=1&keywords=B00AAJ0ZGK&qid=1616372896&sr=8-1",
         "asin": "B00AAJ0ZGK",
         "name": "Rosewill Micro-ATX Mini Tower Computer Case with Dual USB 3.0 Dual Fans and 12.5-Inch Card LINE-M Black",
         "price": "$39.99",
@@ -38,25 +38,25 @@
     {
         "use": true,
         "imgsrc": "https://m.media-amazon.com/images/I/61imoTVBk7L._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/MSI-ProSeries-Compliant-Motherboard-PRO/dp/B083GK2GXR/ref=sr_1_1_mod_primary_new?dchild=1&keywords=B083GK2GXR&qid=1615854302&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sr=8-1",
+        "link": "https://www.amazon.com/MSI-ProSeries-Compliant-Motherboard-PRO/dp/B083GK2GXR/ref=sr_1_1?dchild=1&keywords=B083GK2GXR&qid=1616372896&sr=8-1",
         "asin": "B083GK2GXR",
         "name": "MSI ProSeries AMD A320 1st 2nd 3rd Gen Ryzen Compliant AM4 DDR4 HDMI DVI USB 3 Micro-ATX Motherboard (A320M-A PRO)",
-        "price": "$67.91",
+        "price": "$68.50",
         "component": "mobo"
     },
     {
         "use": true,
         "imgsrc": "https://m.media-amazon.com/images/I/51iEPZZbnEL._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/AMD-Ryzen-Processor-Radeon-Graphics/dp/B079D3DBNM/ref=sr_1_1?dchild=1&keywords=B079D3DBNM&qid=1615854302&sr=8-1",
+        "link": "https://www.amazon.com/AMD-Ryzen-Processor-Radeon-Graphics/dp/B079D3DBNM/ref=sr_1_1?dchild=1&keywords=B079D3DBNM&qid=1616372896&sr=8-1",
         "asin": "B079D3DBNM",
         "name": "AMD Ryzen 3 2200G Processor with Radeon Vega 8 Graphics - YD2200C5FBBOX",
-        "price": "$182.99",
+        "price": "$185.99",
         "component": "cpu"
     },
     {
-        "use": false,
+        "use": true,
         "imgsrc": "https://m.media-amazon.com/images/I/61vOA2gM6VL._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/OLOy-288-Pin-Desktop-Gaming-MD4U082619BBDA/dp/B0899XDTXC/ref=sr_1_1?dchild=1&keywords=B0899XDTXC&qid=1615854302&sr=8-1",
+        "link": "https://www.amazon.com/OLOy-288-Pin-Desktop-Gaming-MD4U082619BBDA/dp/B0899XDTXC/ref=sr_1_1?dchild=1&keywords=B0899XDTXC&qid=1616372896&sr=8-1",
         "asin": "B0899XDTXC",
         "name": "OLOy DDR4 RAM 16GB (2x8GB) 2666 MHz CL19 1.2V 288-Pin Desktop Gaming UDIMM (MD4U082619BBDA)",
         "price": "$72.99",
@@ -65,34 +65,34 @@
     {
         "use": false,
         "imgsrc": "https://m.media-amazon.com/images/I/519UB6jG99L._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/OLOy-288-Pin-Desktop-Gaming-MD4U0826190BHIDA/dp/B08JG2WXSW/ref=sr_1_1?dchild=1&keywords=B08JG2WXSW&qid=1615854302&sr=8-1",
+        "link": "https://www.amazon.com/OLOy-288-Pin-Desktop-Gaming-MD4U0826190BHIDA/dp/B08JG2WXSW/ref=sr_1_1?dchild=1&keywords=B08JG2WXSW&qid=1616372896&sr=8-1",
         "asin": "B08JG2WXSW",
         "name": "OLOy DDR4 RAM 16GB (2x8GB) 2666 MHz CL19 1.2V 288-Pin Desktop Gaming UDIMM (MD4U0826190BHIDA)",
         "price": "$73.99",
         "component": "ram"
     },
     {
-        "use": true,
+        "use": false,
         "imgsrc": "https://m.media-amazon.com/images/I/71+pAbLrL-L._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/TEAMGROUP-2666MHz-PC4-21300-Unbuffered-Computer/dp/B07PLN8YMS/ref=sr_1_1?dchild=1&keywords=B07PLN8YMS&qid=1615854302&sr=8-1",
+        "link": "https://www.amazon.com/TEAMGROUP-2666MHz-PC4-21300-Unbuffered-Computer/dp/B07PLN8YMS/ref=sr_1_1?dchild=1&keywords=B07PLN8YMS&qid=1616372896&sr=8-1",
         "asin": "B07PLN8YMS",
         "name": "TEAMGROUP Elite DDR4 16GB Single 2666MHz (PC4-21300) CL19 Unbuffered Non-ECC 1.2V UDIMM 288 Pin PC Computer Desktop Memory Module Ram Upgrade - TED416G2666C1901 - (1x16GB) Single",
-        "price": "$71.99",
+        "price": "$74.99",
         "component": "ram"
     },
     {
         "use": false,
         "imgsrc": "https://m.media-amazon.com/images/I/71RTRS3oAjL._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/Blue-SN550-250GB-NVMe-Internal/dp/B07YFF8879/ref=sr_1_1_mod_primary_new?dchild=1&keywords=B07YFF8879&qid=1615854302&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sr=8-1",
+        "link": "https://www.amazon.com/Blue-SN550-250GB-NVMe-Internal/dp/B07YFF8879/ref=ice_ac_b_dpb?dchild=1&keywords=B07YFF8879&qid=1616372896&sr=8-1",
         "asin": "B07YFF8879",
         "name": "Western Digital 250GB WD Blue SN550 NVMe Internal SSD - Gen3 x4 PCIe 8Gb/s M.2 2280 3D NAND Up to 2400 MB/s - WDS250G2B0C",
         "price": "$45.90",
         "component": "storage250"
     },
     {
-        "use": false,
+        "use": true,
         "imgsrc": "https://m.media-amazon.com/images/I/61DFVhLXznL._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/Inland-Professional-Internal-Express-Compatible/dp/B08KZS8N8Y/ref=sr_1_1?dchild=1&keywords=B08KZS8N8Y&qid=1615854302&sr=8-1",
+        "link": "https://www.amazon.com/Inland-Professional-Internal-Express-Compatible/dp/B08KZS8N8Y/ref=sr_1_1?dchild=1&keywords=B08KZS8N8Y&qid=1616372896&sr=8-1",
         "asin": "B08KZS8N8Y",
         "name": "Inland Professional 256GB NVMe SSD M.2 2280 PCIe Gen 3.0x4 3D NAND Internal Solid State Drive Read/Write Speed up to 1900/1100 MB/s PCIe Express 3.1 and NVMe 1.3 Compatible (256GB)",
         "price": "$37.99",
@@ -101,79 +101,61 @@
     {
         "use": false,
         "imgsrc": "https://m.media-amazon.com/images/I/71dNq2zT95L._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/Sabrent-SB-ROCKET-256-Rocket-Internal-Performance/dp/B07KGLN3HN/ref=ice_ac_b_dpb?dchild=1&keywords=B07KGLN3HN&qid=1615854302&sr=8-1",
+        "link": "https://www.amazon.com/Sabrent-SB-ROCKET-256-Rocket-Internal-Performance/dp/B07KGLN3HN/ref=ice_ac_b_dpb?dchild=1&keywords=B07KGLN3HN&qid=1616372896&sr=8-1",
         "asin": "B07KGLN3HN",
         "name": "Sabrent 256GB Rocket NVMe PCIe M.2 2280 Internal SSD High Performance Solid State Drive (SB-ROCKET-256)",
         "price": "$44.99",
         "component": "storage250"
     },
     {
-        "use": true,
+        "use": false,
         "imgsrc": "https://m.media-amazon.com/images/I/71G+3oIHneL._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/HP-EX900-Internal-2YY43AA-ABC/dp/B07B319VG2/ref=sr_1_1_mod_primary_new?dchild=1&keywords=B07B319VG2&qid=1615854302&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sr=8-1",
+        "link": "https://www.amazon.com/HP-EX900-Internal-2YY43AA-ABC/dp/B07B319VG2/ref=sr_1_1?dchild=1&keywords=B07B319VG2&qid=1616372896&sr=8-1",
         "asin": "B07B319VG2",
         "name": "HP EX900 M.2 250GB PCIe 3.0 x4 NVMe 3D TLC NAND Internal Solid State Drive (SSD) 2YY43AA#ABC",
-        "price": "$36.99",
+        "price": "$39.99",
         "component": "storage250"
     },
     {
-        "use": false,
+        "use": true,
         "imgsrc": "https://m.media-amazon.com/images/I/71RTRS3oAjL._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/Blue-SN550-500GB-NVMe-Internal/dp/B07YFF3JCN/ref=sr_1_1?dchild=1&keywords=B07YFF3JCN&qid=1615854302&sr=8-1",
+        "link": "https://www.amazon.com/Blue-SN550-500GB-NVMe-Internal/dp/B07YFF3JCN/ref=sr_1_1?dchild=1&keywords=B07YFF3JCN&qid=1616372896&sr=8-1",
         "asin": "B07YFF3JCN",
         "name": "Western Digital 500GB WD Blue SN550 NVMe Internal SSD - Gen3 x4 PCIe 8Gb/s M.2 2280 3D NAND Up to 2400 MB/s - WDS500G2B0C",
         "price": "$59.99",
         "component": "storage500"
     },
     {
-        "use": true,
-        "imgsrc": "https://m.media-amazon.com/images/I/61sIB5eW1XL._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/Inland-Professional-512GB-3-0x4-Internal/dp/B08KZQYW2D/ref=sr_1_1?dchild=1&keywords=B08KZQYW2D&qid=1615854302&sr=8-1",
-        "asin": "B08KZQYW2D",
-        "name": "Inland Professional 512GB NVMe SSD M.2 2280 PCIe Gen 3.0x4 3D NAND Internal Solid State Drive (512GB)",
-        "price": "$57.99",
-        "component": "storage500"
-    },
-    {
         "use": false,
         "imgsrc": "https://m.media-amazon.com/images/I/71QTFjeWeBL._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/Sabrent-SB-ROCKET-512-Rocket-Internal-Performance/dp/B07KGMBCKD/ref=ice_ac_b_dpb?dchild=1&keywords=B07KGMBCKD&qid=1615854302&sr=8-1",
+        "link": "https://www.amazon.com/Sabrent-SB-ROCKET-512-Rocket-Internal-Performance/dp/B07KGMBCKD/ref=ice_ac_b_dpb?dchild=1&keywords=B07KGMBCKD&qid=1616372896&sr=8-1",
         "asin": "B07KGMBCKD",
         "name": "Sabrent 512GB Rocket NVMe PCIe M.2 2280 Internal SSD High Performance Solid State Drive (SB-ROCKET-512)",
         "price": "$69.98",
         "component": "storage500"
     },
     {
-        "use": false,
+        "use": true,
         "imgsrc": "https://m.media-amazon.com/images/I/71RTRS3oAjL._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/Blue-SN550-1TB-NVMe-Internal/dp/B07YFFX5MD/ref=sr_1_1?dchild=1&keywords=B07YFFX5MD&qid=1615854302&sr=8-1",
+        "link": "https://www.amazon.com/Blue-SN550-1TB-NVMe-Internal/dp/B07YFFX5MD/ref=sr_1_1?dchild=1&keywords=B07YFFX5MD&qid=1616372896&sr=8-1",
         "asin": "B07YFFX5MD",
         "name": "Western Digital 1TB WD Blue SN550 NVMe Internal SSD - Gen3 x4 PCIe 8Gb/s M.2 2280 3D NAND Up to 2400 MB/s - WDS100T2B0C",
-        "price": "$104.95",
-        "component": "storage1000"
-    },
-    {
-        "use": true,
-        "imgsrc": "https://m.media-amazon.com/images/I/61pPgG4aexL._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/Inland-Professional-3-0x4-Internal-Solid/dp/B08KZPBGXV/ref=sr_1_1?dchild=1&keywords=B08KZPBGXV&qid=1615854302&sr=8-1",
-        "asin": "B08KZPBGXV",
-        "name": "Inland Professional 1TB NVMe SSD M.2 2280 PCIe Gen 3.0x4 3D NAND Internal Solid State Drive (1TB)",
-        "price": "$99.99",
+        "price": "$104.99",
         "component": "storage1000"
     },
     {
         "use": false,
         "imgsrc": "https://m.media-amazon.com/images/I/71NTyUEAuSL._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/Sabrent-Rocket-Internal-Performance-SB-ROCKET-1TB/dp/B07LGF54XR/ref=sr_1_1?dchild=1&keywords=B07LGF54XR&qid=1615854302&sr=8-1",
+        "link": "https://www.amazon.com/Sabrent-Rocket-Internal-Performance-SB-ROCKET-1TB/dp/B07LGF54XR/ref=ice_ac_b_dpb?dchild=1&keywords=B07LGF54XR&qid=1616372896&sr=8-1",
         "asin": "B07LGF54XR",
         "name": "Sabrent 1TB Rocket NVMe PCIe M.2 2280 Internal SSD High Performance Solid State Drive (SB-ROCKET-1TB)",
         "price": "$129.98",
         "component": "storage1000"
     },
     {
-        "use": true,
+        "use": false,
         "imgsrc": "https://m.media-amazon.com/images/I/51rv-d8vaOL._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/Western-Digital-Blue-SN550-Internal/dp/B08K4NP5DQ/ref=sr_1_1?dchild=1&keywords=B08K4NP5DQ&qid=1615854302&sr=8-1",
+        "link": "https://www.amazon.com/Western-Digital-Blue-SN550-Internal/dp/B08K4NP5DQ/ref=sr_1_1?dchild=1&keywords=B08K4NP5DQ&qid=1616372896&sr=8-1",
         "asin": "B08K4NP5DQ",
         "name": "Western Digital 2TB WD Blue SN550 NVMe Internal SSD - Gen3 x4 PCIe 8Gb/s M.2 2280 3D NAND Up to 2600 MB/s - WDS200T2B0C",
         "price": "$224.99",
@@ -181,26 +163,17 @@
     },
     {
         "use": false,
-        "imgsrc": "https://m.media-amazon.com/images/I/71dM+YShvmL._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/Sabrent-Rocket-Internal-Performance-SB-ROCKET-2TB/dp/B07MTQTNVR/ref=ice_ac_b_dpb?dchild=1&keywords=B07MTQTNVR&qid=1615854302&sr=8-1",
-        "asin": "B07MTQTNVR",
-        "name": "Sabrent 2TB Rocket NVMe PCIe M.2 2280 Internal SSD High Performance Solid State Drive (SB-ROCKET-2TB)",
-        "price": "$249.99",
-        "component": "storage2000"
-    },
-    {
-        "use": false,
         "imgsrc": "https://m.media-amazon.com/images/I/719ibP90r2L._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/Corsair-CV450-Bronze-Certified-Supply/dp/B0838YLZ1H/ref=sr_1_1?dchild=1&keywords=B0838YLZ1H&qid=1615854302&sr=8-1",
+        "link": "https://www.amazon.com/Corsair-CV450-Bronze-Certified-Supply/dp/B0838YLZ1H/ref=sr_1_1?dchild=1&keywords=B0838YLZ1H&qid=1616372897&sr=8-1",
         "asin": "B0838YLZ1H",
         "name": "Corsair CV Series CV450 450 Watt 80+ Bronze Certified Fixed Cable Power Supply",
-        "price": "$44.99",
+        "price": "$49.99",
         "component": "psu"
     },
     {
         "use": true,
         "imgsrc": "https://m.media-amazon.com/images/I/71FmlyM+pxL._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/ARESGAME-Supply-Bronze-Certified-AGV500/dp/B08CXVKP3M/ref=sr_1_1?dchild=1&keywords=B08CXVKP3M&qid=1615854302&sr=8-1",
+        "link": "https://www.amazon.com/ARESGAME-Supply-Bronze-Certified-AGV500/dp/B08CXVKP3M/ref=sr_1_1?dchild=1&keywords=B08CXVKP3M&qid=1616372897&sr=8-1",
         "asin": "B08CXVKP3M",
         "name": "ARESGAME Power Supply 500W 80+ Bronze Certified PSU (AGV500)",
         "price": "$39.69",
@@ -209,7 +182,7 @@
     {
         "use": false,
         "imgsrc": "https://m.media-amazon.com/images/I/61XIg7GjtlL._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/Cudy-WE3000-3000Mbps-Wireless-Bluetooth/dp/B082NZYDDM/ref=sr_1_1?dchild=1&keywords=B082NZYDDM&qid=1615854303&sr=8-1",
+        "link": "https://www.amazon.com/Cudy-WE3000-3000Mbps-Wireless-Bluetooth/dp/B082NZYDDM/ref=sr_1_1?dchild=1&keywords=B082NZYDDM&qid=1616372897&sr=8-1",
         "asin": "B082NZYDDM",
         "name": "Cudy WE3000 AX 3000Mbps Wireless WiFi 6 PCIe Card for PC Bluetooth 5.0 AX200 Module Inside 2402Mbps+574Mbps WiFi 6 Speed Bluetooth 5.0/4.2/4.0 802.11ax/ac/a/b/g/n Windows 10 64-bit Only",
         "price": "$27.90",
@@ -218,7 +191,7 @@
     {
         "use": true,
         "imgsrc": "https://m.media-amazon.com/images/I/61wBAlF+yoL._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/EDUP-Bluetooth-Wireless-Network-Adapter/dp/B0832MR4WB/ref=sr_1_1?dchild=1&keywords=B0832MR4WB&qid=1615854303&sr=8-1",
+        "link": "https://www.amazon.com/EDUP-Bluetooth-Wireless-Network-Adapter/dp/B0832MR4WB/ref=sr_1_1?dchild=1&keywords=B0832MR4WB&qid=1616372897&sr=8-1",
         "asin": "B0832MR4WB",
         "name": "EDUP PCIe WiFi 6 Card Bluetooth 5.1 AX 3000 Mbps AX200 Dual Band 5.GHz/2.4GHz PCI-E Wireless WiFi Network Adapter Card for Desktop Windows 10 64-bit",
         "price": "$27.50",
@@ -227,7 +200,7 @@
     {
         "use": false,
         "imgsrc": "https://m.media-amazon.com/images/I/61AGHCissKL._AC_UL320_.jpg",
-        "link": "https://www.amazon.com/2974Mbps-Bluetooth-Ultra-Low-802-11AX-Dual-Band/dp/B07Y2MYK4N/ref=sr_1_1?dchild=1&keywords=B07Y2MYK4N&qid=1615854303&sr=8-1",
+        "link": "https://www.amazon.com/2974Mbps-Bluetooth-Ultra-Low-802-11AX-Dual-Band/dp/B07Y2MYK4N/ref=sr_1_1?dchild=1&keywords=B07Y2MYK4N&qid=1616372897&sr=8-1",
         "asin": "B07Y2MYK4N",
         "name": "WiFi 6 Card for PC | Wireless PCIe WiFi Card | Max 3000Mbps with Bluetooth 5.1 | Intel AX200 ChipMU-MIMOOFDMAUltra-Low Latency | 802.11AX Dual-Band PCI-E Card (for Windows 10 64-bit Only)",
         "price": "$27.88",
